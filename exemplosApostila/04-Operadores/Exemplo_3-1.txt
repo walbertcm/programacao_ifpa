@@ -1,0 +1,26 @@
+public class OperadoresAritmeticos {
+    public static void main(String[] args) {
+        int numero1 = 20, numero2 = 4;
+        
+        // Adição
+        int soma = numero1 + numero2;
+        
+        // Subtração
+        int diferenca = numero1 - numero2;
+        
+        // Multiplicação
+        int multiplicacao = numero1 * numero2;
+        
+        // Divisão
+        int divisao = numero1 / numero2;
+        
+        // Módulo (resto da divisão)
+        int resto = numero1 % numero2;
+
+        System.out.println("Soma: " + soma);
+        System.out.println("Diferença: " + diferenca);
+        System.out.println("Multiplicação: " + multiplicacao);
+        System.out.println("Divisão: " + divisao);
+        System.out.println("Resto: " + resto);
+    }
+}

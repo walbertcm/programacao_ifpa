@@ -1,0 +1,1 @@
+int velocidade = 80; // Define a velocidade máxima permitida

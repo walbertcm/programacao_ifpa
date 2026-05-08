@@ -1,0 +1,41 @@
+import javax.swing.JOptionPane;
+
+public class SistemaSimplesAprovacao {
+
+    public static void main(String[] args) {
+
+        String nome = JOptionPane.showInputDialog("Digite o nome do cliente:");
+
+        int idade = Integer.parseInt(JOptionPane.showInputDialog("Digite a idade do cliente:"));
+
+        double salario = Double.parseDouble(JOptionPane.showInputDialog("Digite o salário mensal:"));
+
+        double valorEmprestimo = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor do empréstimo:"));
+
+        int numeroParcelas = Integer.parseInt(JOptionPane.showInputDialog("Digite o número de parcelas:"));
+
+        double valorParcela = valorEmprestimo / numeroParcelas;
+        double limite = salario * 0.30;
+
+        String resultado;
+
+        if (idade >= 18 && salario > 0 && valorParcela <= limite) {
+            resultado = "Crédito aprovado.";
+        } else {
+            resultado = "Crédito negado.";
+        }
+
+        JOptionPane.showMessageDialog(
+                null,
+                "===== RESULTADO DA ANÁLISE =====\n"
+                + "Cliente: " + nome + "\n"
+                + "Idade: " + idade + "\n"
+                + "Salário: R$ " + salario + "\n"
+                + "Empréstimo: R$ " + valorEmprestimo + "\n"
+                + "Parcelas: " + numeroParcelas + "\n"
+                + "Valor da parcela: R$ " + valorParcela + "\n"
+                + "Limite de 30% do salário: R$ " + limite + "\n"
+                + "Resultado: " + resultado
+        );
+    }
+}

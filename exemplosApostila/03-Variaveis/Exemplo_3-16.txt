@@ -1,0 +1,7 @@
+public static void main(String[] args) {
+    if (true) {
+        int numero = 10;
+        System.out.println(numero); // funciona
+    }
+
+}

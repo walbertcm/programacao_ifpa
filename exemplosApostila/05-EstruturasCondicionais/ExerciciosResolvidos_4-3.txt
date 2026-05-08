@@ -1,0 +1,16 @@
+import javax.swing.JOptionPane;
+public class Porta {
+
+    public static void main(String[] args) {
+
+        int doorCode = Integer.parseInt(
+            JOptionPane.showInputDialog("Digite o codigo da porta:")
+        );
+
+        if (doorCode == 1337) {
+            JOptionPane.showMessageDialog(null, "Codigo correto. Porta Aberta.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Codigo incorreto. Porta Fechada.");
+        }
+    }
+}

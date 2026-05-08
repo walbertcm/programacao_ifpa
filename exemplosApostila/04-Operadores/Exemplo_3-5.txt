@@ -1,0 +1,15 @@
+public class ExemploOperadoresLogicos {
+    public static void main(String[] args) {
+        
+        int x = 7;
+
+        // Operador AND (&&)
+        System.out.println("x > 5 && x < 10: " + (x > 5 && x < 10));
+
+        // Operador OR (||)
+        System.out.println("x < 5 || x < 10: " + (x < 5 || x < 10));
+
+        // Operador NOT (!)
+        System.out.println("!(x > 5 && x < 10): " + !(x > 5 && x < 10));
+    }
+}

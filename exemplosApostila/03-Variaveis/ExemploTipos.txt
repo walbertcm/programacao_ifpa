@@ -1,0 +1,24 @@
+package edu.ifpa.exemplotipos;
+
+   public class ExemploTipos {
+    public static void main(String[] args) {
+
+        int idade = 18;
+        double altura = 1.75;
+        char sexo = 'M';
+        boolean ativo = true;
+        float nota = 7.5f;
+        long populacao = 8000000L;
+        short ano = 2024;
+        byte nivel = 1;
+
+        System.out.println("Idade: " + idade);
+        System.out.println("Altura: " + altura);
+        System.out.println("Sexo: " + sexo);
+        System.out.println("Ativo: " + ativo);
+        System.out.println("Nota: " + nota);
+        System.out.println("Populacao: " + populacao);
+        System.out.println("Ano: " + ano);
+        System.out.println("Nivel: " + nivel);
+    }
+}

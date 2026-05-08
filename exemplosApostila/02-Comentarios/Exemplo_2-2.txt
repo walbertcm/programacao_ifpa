@@ -1,0 +1,6 @@
+/*
+   Este bloco calcula o imposto
+   baseado na tabela de 2024.
+*/
+
+double imposto = 0.15;

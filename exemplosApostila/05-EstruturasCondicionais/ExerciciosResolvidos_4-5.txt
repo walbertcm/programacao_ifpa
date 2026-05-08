@@ -1,0 +1,26 @@
+import javax.swing.JOptionPane;
+
+public class SistemaUsuarios {
+    public static void main(String[] args) {
+
+        String entrada = JOptionPane.showInputDialog(
+            "Digite o tipo de usuario:\n1 - Aluno\n2 - Professor\n3 - Coordenador"
+        );
+
+        int opcao = Integer.parseInt(entrada);
+
+        switch (opcao) {
+            case 1:
+                JOptionPane.showMessageDialog(null, "Acesso ao sistema de estudos");
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(null, "Acesso ao sistema de ensino");
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(null, "Acesso completo ao sistema");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Usuario invalido");
+        }
+    }
+}

@@ -1,0 +1,32 @@
+public class ExemploUnarios {
+    public static void main(String[] args) {
+
+        int x = 5;
+        int y = 5;
+        int z = 5;
+        boolean status = true;
+
+        // Incremento
+        System.out.println("Pós-incremento (x++): " + (x++)); // usa e depois incrementa
+        System.out.println("Valor de x após incremento: " + x);
+
+        System.out.println("Pré-incremento (++y): " + (++y)); // incrementa antes de usar
+
+        // Decremento
+        System.out.println("Pós-decremento (z--): " + (z--)); // usa e depois decrementa
+        System.out.println("Valor de z após decremento: " + z);
+
+        System.out.println("Pré-decremento (--z): " + (--z)); // decrementa antes de usar
+
+        // Positivo (não altera)
+        int a = -10;
+        System.out.println("Positivo (+a): " + (+a));
+
+        // Negação aritmética
+        int b = 10;
+        System.out.println("Negação (-b): " + (-b));
+
+        // Negação lógica
+        System.out.println("Negação lógica (!status): " + (!status));
+    }
+}

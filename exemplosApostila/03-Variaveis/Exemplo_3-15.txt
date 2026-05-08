@@ -1,0 +1,7 @@
+public class Exemplo {
+    static int idade = 15; // variável de classe
+
+    public static void main(String[] args) {
+        System.out.println(idade);
+    }
+}
