@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios 02 - Algoritmos</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<title>Lista de Exercícios 02 - Algoritmos</title>
+
+
+<!-- Questão 11 -->
+<div class="questao">
+  <h2>Questão 11</h2>
+  <p>Qual será a saída do algoritmo abaixo?</p>
+
+  <pre>
+prog q3
+int x;
+x <- 10;
+imprima "Valor de x = ", x+1;
+fimprog
+  </pre>
+
+  <button onclick="mostrarResposta('resposta11')">Ver resposta</button>
+
+  <div id="resposta11" class="resposta">
+    <pre>
+algoritmo "q11"
+
+inicio
+   escreval("E PRECISO FAZER TODOS OS ALGORITMOS PARA APRENDER")
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 12 -->
+<div class="questao">
+  <h2>Questão 12</h2>
+  <p>Determine o resultado das operações.</p>
+
+  <pre>
+x = 2
+y = 5
+  </pre>
+
+  <button onclick="mostrarResposta('resposta12')">Ver resposta</button>
+
+  <div id="resposta12" class="resposta">
+    <pre>
+algoritmo "q12"
+
+var
+   x, y: inteiro
+
+inicio
+   x <- 2
+   y <- 5
+
+   escreval("x = ", x)
+   x <- x + 1
+
+   escreval("y = ", y)
+   y <- y - 1
+
+   escreval("novo x = ", x)
+   escreval("novo y = ", y)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+x = 2
+y = 5
+novo x = 3
+novo y = 4
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 13 -->
+<div class="questao">
+  <h2>Questão 13</h2>
+  <p>Leia dois números inteiros e imprima a subtração entre eles.</p>
+
+  <button onclick="mostrarResposta('resposta13')">Ver resposta</button>
+
+  <div id="resposta13" class="resposta">
+    <pre>
+algoritmo "q13"
+
+var
+   a, b, resultado: inteiro
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a - b
+
+   escreval("Resultado: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 14 -->
+<div class="questao">
+  <h2>Questão 14</h2>
+  <p>Leia um número inteiro e subtraia 5, imprimindo o resultado.</p>
+
+  <button onclick="mostrarResposta('resposta14')">Ver resposta</button>
+
+  <div id="resposta14" class="resposta">
+    <pre>
+algoritmo "q14"
+
+var
+   x, resultado: inteiro
+
+inicio
+   escreva("Digite um numero: ")
+   leia(x)
+
+   resultado <- x - 5
+
+   escreval("Resultado: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 15 -->
+<div class="questao">
+  <h2>Questão 15</h2>
+  <p>Leia dois números reais e imprima a diferença entre eles.</p>
+
+  <button onclick="mostrarResposta('resposta15')">Ver resposta</button>
+
+  <div id="resposta15" class="resposta">
+    <pre>
+algoritmo "q15"
+
+var
+   a, b, resultado: real
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a - b
+
+   escreval("Diferenca: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 16 -->
+<div class="questao">
+  <h2>Questão 16</h2>
+  <p>Calcule o produto entre 28 e 43.</p>
+
+  <button onclick="mostrarResposta('resposta16')">Ver resposta</button>
+
+  <div id="resposta16" class="resposta">
+    <pre>
+algoritmo "q16"
+
+var
+   produto: inteiro
+
+inicio
+   produto <- 28 * 43
+   escreval("Produto: ", produto)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Produto: 1204
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 17 -->
+<div class="questao">
+  <h2>Questão 17</h2>
+  <p>Leia dois números inteiros e imprima o produto entre eles.</p>
+
+  <button onclick="mostrarResposta('resposta17')">Ver resposta</button>
+
+  <div id="resposta17" class="resposta">
+    <pre>
+algoritmo "q17"
+
+var
+   a, b, resultado: inteiro
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a * b
+
+   escreval("Produto: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 18 -->
+<div class="questao">
+  <h2>Questão 18</h2>
+  <p>Leia um número real e imprima o triplo desse valor.</p>
+
+  <button onclick="mostrarResposta('resposta18')">Ver resposta</button>
+
+  <div id="resposta18" class="resposta">
+    <pre>
+algoritmo "q18"
+
+var
+   x, resultado: real
+
+inicio
+   escreva("Digite um numero: ")
+   leia(x)
+
+   resultado <- x * 3
+
+   escreval("Triplo: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 19 -->
+<div class="questao">
+  <h2>Questão 19</h2>
+  <p>Leia dois números reais e imprima o resultado da multiplicação.</p>
+
+  <button onclick="mostrarResposta('resposta19')">Ver resposta</button>
+
+  <div id="resposta19" class="resposta">
+    <pre>
+algoritmo "q19"
+
+var
+   a, b, resultado: real
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a * b
+
+   escreval("Resultado: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 20 -->
+<div class="questao">
+  <h2>Questão 20</h2>
+  <p>Leia dois números reais e imprima o resultado da divisão do primeiro pelo segundo.</p>
+
+  <button onclick="mostrarResposta('resposta20')">Ver resposta</button>
+
+  <div id="resposta20" class="resposta">
+    <pre>
+algoritmo "q20"
+
+var
+   a, b, resultado: real
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a / b
+
+   escreval("Resultado: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 21 -->
+<div class="questao">
+  <h2>Questão 21</h2>
+  <p>Leia um número real e imprima a metade desse valor.</p>
+
+  <button onclick="mostrarResposta('resposta21')">Ver resposta</button>
+
+  <div id="resposta21" class="resposta">
+    <pre>
+algoritmo "q21"
+
+var
+   x, resultado: real
+
+inicio
+   escreva("Digite um numero: ")
+   leia(x)
+
+   resultado <- x / 2
+
+   escreval("Metade: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 22 -->
+<div class="questao">
+  <h2>Questão 22</h2>
+  <p>Leia dois números inteiros e imprima o resultado da divisão inteira.</p>
+
+  <button onclick="mostrarResposta('resposta22')">Ver resposta</button>
+
+  <div id="resposta22" class="resposta">
+    <pre>
+algoritmo "q22"
+
+var
+   a, b, resultado: inteiro
+
+inicio
+   escreva("Digite o primeiro numero: ")
+   leia(a)
+
+   escreva("Digite o segundo numero: ")
+   leia(b)
+
+   resultado <- a div b
+
+   escreval("Divisao inteira: ", resultado)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 23 -->
+<div class="questao">
+  <h2>Questão 23</h2>
+  <p>Calcule a média de 8, 9 e 7.</p>
+
+  <button onclick="mostrarResposta('resposta23')">Ver resposta</button>
+
+  <div id="resposta23" class="resposta">
+    <pre>
+algoritmo "q23"
+
+var
+   m: real
+
+inicio
+   m <- (8 + 9 + 7) / 3
+   escreval("Media: ", m)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Media: 8
+    </pre>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
