@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios 01 - Algoritmos</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Lista de Exercícios de Algoritmos</h1>
+
+<!-- Questão 1 -->
+<div class="questao">
+  <h2>Questão 1</h2>
+  <p>Analise o algoritmo abaixo e informe qual será o valor impresso.</p>
+
+  <pre>
+  prog q1
+  int x;
+  x &lt;- 10;
+  imprima x;
+fimprog
+  </pre>
+
+  <button onclick="mostrarResposta('resposta1')">Ver resposta</button>
+
+  <div id="resposta1" class="resposta">
+     <pre>
+      algoritmo "q1"
+      var
+        x: inteiro
+      inicio
+        x <- 10
+        escreval(x)
+      fimalgoritmo
+     </pre>
+  </div>
+  </div>
+
+  <!-- Questão 2 -->
+<div class="questao">
+  <h2>Questão 2</h2>
+  <p>Qual será a saída do algoritmo abaixo?</p>
+
+  <pre>
+prog q2
+int x;
+x <- 10;
+imprima "Valor de x = ", x;
+fimprog
+  </pre>
+
+  <button onclick="mostrarResposta('resposta2')">Ver resposta</button>
+
+  <div id="resposta2" class="resposta">
+    <pre>
+algoritmo "q2"
+
+var
+   x: inteiro
+
+inicio
+   x <- 10
+   escreval("Valor de x = ", x)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Valor de x = 10
+    </pre>
+  </div>
+</div>
+
+
+<!-- Questão 3 -->
+<div class="questao">
+  <h2>Questão 3</h2>
+
+  <p>Crie um algoritmo que declare uma variável do tipo real, atribua o valor 7.5 e imprima o valor.</p>
+
+  <button onclick="mostrarResposta('resposta3')">Ver resposta</button>
+
+  <div id="resposta3" class="resposta">
+    <pre>
+algoritmo "q3"
+
+var
+   r: real
+
+inicio
+   r <- 7.5
+   escreval("Valor real: ", r)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Valor real: 7.5
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 4 -->
+<div class="questao">
+  <h2>Questão 4</h2>
+
+  <p>Crie um algoritmo que declare uma variável do tipo caractere, atribua seu nome e imprima uma mensagem com esse valor.</p>
+
+  <button onclick="mostrarResposta('resposta4')">Ver resposta</button>
+
+  <div id="resposta4" class="resposta">
+    <pre>
+algoritmo "q4"
+
+var
+   nome: caractere
+
+inicio
+   nome <- "Joao"
+   escreval("Nome: ", nome)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Nome: Joao
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 5 -->
+<div class="questao">
+  <h2>Questão 5</h2>
+
+  <p>Crie um algoritmo que declare uma variável lógica, atribua o valor verdadeiro e imprima o valor.</p>
+
+  <button onclick="mostrarResposta('resposta5')">Ver resposta</button>
+
+  <div id="resposta5" class="resposta">
+    <pre>
+algoritmo "q5"
+
+var
+   status: logico
+
+inicio
+   status <- verdadeiro
+   escreval("Status: ", status)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+    <pre>
+Status: verdadeiro
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 6 -->
+<div class="questao">
+  <h2>Questão 6</h2>
+
+  <p>Leia um número inteiro digitado pelo usuário e imprima esse valor.</p>
+
+  <button onclick="mostrarResposta('resposta6')">Ver resposta</button>
+
+  <div id="resposta6" class="resposta">
+    <pre>
+algoritmo "q6"
+
+var
+   x: inteiro
+
+inicio
+   escreva("Digite um numero inteiro: ")
+   leia(x)
+
+   escreval("Valor digitado: ", x)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 7 -->
+<div class="questao">
+  <h2>Questão 7</h2>
+
+  <p>Leia um número real digitado pelo usuário e imprima esse valor.</p>
+
+  <button onclick="mostrarResposta('resposta7')">Ver resposta</button>
+
+  <div id="resposta7" class="resposta">
+    <pre>
+algoritmo "q7"
+
+var
+   r: real
+
+inicio
+   escreva("Digite um numero real: ")
+   leia(r)
+
+   escreval("Valor digitado: ", r)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 8 -->
+<div class="questao">
+  <h2>Questão 8</h2>
+
+  <p>Leia um nome (caractere) digitado pelo usuário e imprima uma mensagem com esse nome.</p>
+
+  <button onclick="mostrarResposta('resposta8')">Ver resposta</button>
+
+  <div id="resposta8" class="resposta">
+    <pre>
+algoritmo "q8"
+
+var
+   nome: caractere
+
+inicio
+   escreva("Digite seu nome: ")
+   leia(nome)
+
+   escreval("Ola, ", nome)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 9 -->
+<div class="questao">
+  <h2>Questão 9</h2>
+
+  <p>Leia um valor lógico (verdadeiro ou falso) e imprima esse valor.</p>
+
+  <button onclick="mostrarResposta('resposta9')">Ver resposta</button>
+
+  <div id="resposta9" class="resposta">
+    <pre>
+algoritmo "q9"
+
+var
+   status: logico
+
+inicio
+   escreva("Digite verdadeiro ou falso: ")
+   leia(status)
+
+   escreval("Valor digitado: ", status)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 10 -->
+<div class="questao">
+  <h2>Questão 10</h2>
+
+  <p>Crie um algoritmo que leia um valor inteiro, um número real, um nome (caractere) e um valor lógico. Em seguida, imprima todos os valores informados.</p>
+
+  <button onclick="mostrarResposta('resposta10')">Ver resposta</button>
+
+  <div id="resposta10" class="resposta">
+    <pre>
+algoritmo "q10"
+
+var
+   x: inteiro
+   r: real
+   nome: caractere
+   status: logico
+
+inicio
+   escreva("Digite um numero inteiro: ")
+   leia(x)
+
+   escreva("Digite um numero real: ")
+   leia(r)
+
+   escreva("Digite um nome: ")
+   leia(nome)
+
+   escreva("Digite verdadeiro ou falso: ")
+   leia(status)
+
+   escreval("Inteiro: ", x)
+   escreval("Real: ", r)
+   escreval("Nome: ", nome)
+   escreval("Logico: ", status)
+
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
