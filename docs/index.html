@@ -13,6 +13,10 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        html{
+            scroll-behavior: smooth;
+        }
+
         body{
             background-color: #f4f4f4;
             color: #333;
@@ -21,151 +25,337 @@
             min-height: 100vh;
         }
 
-        header{
-            background-color: #003366;
+        .topbar{
+            background-color: #001f3f;
+            padding: 12px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topbar a{
             color: white;
-            padding: 25px;
+            text-decoration: none;
+            margin: 0 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 0;
+        }
+
+        .topbar a:hover{
+            color: #ffd700;
+        }
+
+        header{
+            background: linear-gradient(135deg, #003366, #0055aa);
+            color: white;
+            padding: 45px 25px;
             text-align: center;
         }
 
         header h1{
             margin-bottom: 10px;
-            font-size: 2rem;
+            font-size: 2.2rem;
+        }
+
+        header p{
+            font-size: 1.1rem;
+            margin-top: 6px;
         }
 
         main{
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
         .container{
             background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            padding: 42px;
+            border-radius: 14px;
+            box-shadow: 0px 4px 18px rgba(0,0,0,0.12);
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
+        }
+
+        .intro{
             text-align: center;
+            margin-bottom: 35px;
         }
 
-        .container h2{
-            margin-bottom: 25px;
+        .intro h2{
             color: #003366;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
 
-        .links{
+        .intro p{
+            line-height: 1.7;
+            font-size: 1.08rem;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .section{
+            margin-top: 38px;
+        }
+
+        .section h2{
+            color: #003366;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 8px;
+        }
+
+        .quick-access{
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 28px;
         }
 
-        .links a{
+        .quick-access a{
+            text-decoration: none;
+            color: white;
+            background-color: #0055aa;
+            padding: 15px 22px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .quick-access a:hover{
+            background-color: #003f7f;
+            transform: translateY(-2px);
+        }
+
+        .btn-apostila{
+            background-color: #006633 !important;
+        }
+
+        .btn-apostila:hover{
+            background-color: #004d26 !important;
+        }
+
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card{
+            background-color: #f8fbff;
+            border: 1px solid #dce8f7;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-4px);
+            box-shadow: 0px 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .card h3{
+            color: #003366;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+
+        .card p{
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .card a{
+            display: inline-block;
             text-decoration: none;
             background-color: #0055aa;
             color: white;
-            padding: 15px;
-            border-radius: 8px;
-            transition: 0.3s;
-            font-size: 1.1rem;
+            padding: 10px 16px;
+            border-radius: 7px;
             font-weight: bold;
         }
 
-        .links a:hover{
+        .card a:hover{
             background-color: #003f7f;
-            transform: scale(1.03);
+        }
+
+        .conteudos{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            list-style: none;
+        }
+
+        .conteudos li{
+            background-color: #eef5ff;
+            border-left: 5px solid #0055aa;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .note{
+            background-color: #eef5ff;
+            border-left: 5px solid #0055aa;
+            padding: 18px;
+            border-radius: 6px;
+            line-height: 1.6;
+            margin-top: 25px;
         }
 
         footer{
             background-color: #003366;
             color: white;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        @media(max-width: 800px){
+            .cards{
+                grid-template-columns: 1fr;
+            }
+
+            .conteudos{
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width: 600px){
+            .topbar a{
+                display: block;
+                margin: 4px 0;
+            }
+
+            .container{
+                padding: 25px;
+            }
+
+            header h1{
+                font-size: 1.6rem;
+            }
+
+            .intro h2{
+                font-size: 1.4rem;
+            }
+
+            .quick-access a{
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <nav class="topbar">
+        <a href="index.html">Início</a>
+        <a href="https://github.com/walbertcm/programacao_ifpa/blob/main/2026_Apostila___Programacao_JAVA.pdf" target="_blank">Apostila</a>
+        <a href="algoritmos.html">Algoritmos</a>
+        <a href="programacao.html">Programação</a>
+        <a href="estruturas.html">Estrutura de Dados</a>
+    </nav>
+
     <header>
-        <h1>Disciplina: Programação</h1>
+        <h1>Algoritmos e Programação</h1>
+        <p>Material de apoio didático para as disciplinas de Programação</p>
         <p>Prof. Walbert Cunha Monteiro</p>
-        <p><a href="https://github.com/walbertcm/programacao_ifpa/blob/main/2026_Apostila___Programacao_JAVA.pdf" target="_blank">Apostila</a></p>
     </header>
 
     <main>
         <div class="container">
 
-            <h2>Listas de Exercícios - Algoritmos</h2>
+            <section class="intro">
+                <h2>Bem-vindo ao Portal da Disciplina</h2>
+                <p>
+                    Esta página reúne materiais didáticos das disciplinas de Algoritmos, Programação e Estrutura de Dados.
+                    Aqui você encontrará apostilas, listas de exercícios e conteúdos complementares desenvolvidos para apoiar
+                    o aprendizado de lógica de programação e o desenvolvimento do pensamento computacional. Os conteúdos estão
+                    organizados de maneira progressiva, iniciando pelos conceitos básicos de algoritmos e avançando gradualmente
+                    para estruturas e técnicas mais complexas da programação.
+                </p>
 
-            <div class="links">
-                <a href="listaExercicios1.html">
-                    Lista de Exercícios - Introdutórios 
-                </a>
+                <div class="quick-access">
+                    <a class="btn-apostila" href="https://github.com/walbertcm/programacao_ifpa/blob/main/2026_Apostila___Programacao_JAVA.pdf" target="_blank">
+                        📘 Acessar Apostila
+                    </a>
+                    <a href="algoritmos.html">🧠 Algoritmos</a>
+                    <a href="programacao.html">💻 Programação</a>
+                    <a href="estruturas.html">📊 Estrutura de Dados</a>
+                </div>
+            </section>
 
-                <a href="listaExercicios02.html">
-                    Lista de Exercícios  - 1
-                </a>
-            </div>
+            <section class="section">
+                <h2>Áreas do Material</h2>
 
-            <br>
-             <h2>Listas de Exercícios Programação II</h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3>🧠 Algoritmos</h3>
+                        <p>
+                            Conteúdos introdutórios, listas de exercícios e atividades voltadas à construção do raciocínio lógico.
+                        </p>
+                        <a href="algoritmos.html">Acessar</a>
+                    </div>
 
-            <div class="links">
-                <a href="https://forms.gle/7cJwiWduRsJ7gfGt6">
-                    Capitulo 1 - Fundamentos de Programação
-                </a>
+                    <div class="card">
+                        <h3>💻 Programação</h3>
+                        <p>
+                            Materiais sobre fundamentos de Java, operadores, comentários, estruturas condicionais e repetição.
+                        </p>
+                        <a href="programacao.html">Acessar</a>
+                    </div>
 
-                <a href="https://forms.gle/RsPjeUPjeA83yrkH8">
-                    Capítulo 4 - Operadores Parte 01
-                </a>
+                    <div class="card">
+                        <h3>📊 Estrutura de Dados</h3>
+                        <p>
+                            Exercícios e conteúdos sobre arrays, estruturas multidimensionais e organização de dados em Java.
+                        </p>
+                        <a href="estruturas.html">Acessar</a>
+                    </div>
+                </div>
+            </section>
 
-                <a href="https://forms.gle/nTikNCm6RCqTK5do9">
-                    Capítulo 4 - Operadores Parte 02
-                </a>
-            </div>
-            
-            <br>
-            <h2>Listas de Exercícios Programação III</h2>
+            <section class="section">
+                <h2>Conteúdos Abordados</h2>
 
-            <div class="links">
-                <a href="listaExercicios1.html">
-                    Lista de Exercícios 1
-                </a>
+                <ul class="conteudos">
+                    <li>Lógica de Programação</li>
+                    <li>Variáveis e Tipos de Dados</li>
+                    <li>Entrada e Saída de Dados</li>
+                    <li>Operadores Aritméticos e Lógicos</li>
+                    <li>Estruturas Condicionais</li>
+                    <li>Estruturas de Repetição</li>
+                    <li>Arrays Unidimensionais</li>
+                    <li>Arrays Multidimensionais</li>
+                </ul>
+            </section>
 
-                <a href="listaExercicios02.html">
-                    Lista de Exercícios 2
-                </a>
-            </div>
-            
-            <br>
-            <h2>Listas de Exercícios - Estrutura de Dados</h2>
+            <section class="section">
+                <h2>Orientação de Uso</h2>
 
-            <div class="links">
-                <a href="https://forms.gle/2HGDrPjEQUNUCQVY6">
-                    Lista de Exercícios Array Unidimensional Parte 01.
-                </a>
-
-                <a href="https://forms.gle/37yFMXMmCWC4BFM69">
-                    Lista de Exercícios Array Unidimensional Parte 02.
-                </a>
-
-                <a href="https://forms.gle/EhXVsYEEET87k8Xs7">
-                    Lista de Exercícios Array Multidimensionais Parte 01.
-                </a>
-
-
-            </div>
+                <div class="note">
+                    <p>
+                        Recomenda-se iniciar pelos materiais de Algoritmos, avançar para os fundamentos de Programação
+                        e, em seguida, estudar os conteúdos de Estrutura de Dados. Essa sequência favorece uma aprendizagem
+                        gradual, conectando teoria, prática e resolução de problemas.
+                    </p>
+                </div>
+            </section>
 
         </div>
     </main>
 
     <footer>
-        <p>
-            Desenvolvido por Prof. Walbert Cunha Monteiro
-        </p>
+        <p>Prof. Walbert Cunha Monteiro</p>
+        <p>Instituto Federal do Pará - IFPA</p>
+        <p>Material didático para apoio às disciplinas de programação</p>
     </footer>
 
 </body>

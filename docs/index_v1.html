@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação I - Algoritmos</title>
+
+<style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .topbar{
+            background-color: #001f3f;
+            padding: 12px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topbar a{
+            color: white;
+            text-decoration: none;
+            margin: 0 14px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 6px 0;
+        }
+
+        .topbar a:hover{
+            color: #ffd700;
+        }
+
+        header{
+            background-color: #003366;
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+        }
+
+        header h1{
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        header p{
+            font-size: 1.1rem;
+        }
+
+        main{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .container{
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .intro{
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .intro h2{
+            color: #003366;
+            margin-bottom: 12px;
+        }
+
+        .intro p{
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .section{
+            margin-top: 30px;
+        }
+
+        .section h2{
+            color: #003366;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #e6e6e6;
+            padding-bottom: 8px;
+        }
+
+        .links{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .links a{
+            text-decoration: none;
+            background-color: #0055aa;
+            color: white;
+            padding: 16px;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-size: 1.05rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .links a:hover{
+            background-color: #003f7f;
+            transform: scale(1.02);
+        }
+
+        .note{
+            background-color: #eef5ff;
+            border-left: 5px solid #0055aa;
+            padding: 16px;
+            border-radius: 6px;
+            line-height: 1.6;
+            margin-top: 25px;
+        }
+
+        footer{
+            background-color: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media(max-width: 600px){
+            .topbar a{
+                display: block;
+                margin: 4px 0;
+            }
+
+            .container{
+                padding: 25px;
+            }
+
+            header h1{
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<nav class="topbar">
+    <a href="index.html">Início</a>
+    <a href="https://github.com/walbertcm/programacao_ifpa/blob/main/2026_Apostila___Programacao_JAVA.pdf" target="_blank">Apostila</a>
+    <a href="algoritmos.html">Algoritmos</a>
+    <a href="programacao.html">Programação</a>
+    <a href="estruturas.html">Estrutura de Dados</a>
+</nav>
+    <header>
+        <h1>Disciplina: Algoritmos e Programação</h1>
+        <p>Prof. Walbert Cunha Monteiro</p>
+       
+    </header>
+
+    <main>
+ 
+        <div class="container">
+
+            <section class="intro">
+
+                <p>
+                    Esta página reúne materiais didáticos das disciplinas de Algoritmos, Programação e Estrutura de Dados. Aqui você encontrará apostilas, listas de exercícios e conteúdos complementares desenvolvidos para apoiar o aprendizado de lógica de programação e o desenvolvimento do pensamento computacional. Os conteúdos estão organizados de maneira progressiva, iniciando pelos conceitos básicos de algoritmos e avançando gradualmente para estruturas e técnicas mais complexas da programação.
+                </p>
+            </section>
+
+
+        </div>
+    </main>
+ 
+
+    <footer>
+        <p>
+            Desenvolvido por Prof. Walbert Cunha Monteiro
+        </p>
+    </footer>
+
+</body>
+</html>
