@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios 03 - Algoritmos</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<title>Lista de Exercícios 03 - Algoritmos</title>
+<h2>As questões da Lista de Exercícios 03 não tem video aula com a solução. Somente a resposta</h2>
+
+<!-- Questão 21 -->
+<div class="questao">
+  <h2>Questão 21</h2>
+
+  <p>
+    Analise o algoritmo abaixo e determine qual será o valor armazenado
+    na variável <strong>resultado</strong> ao final da execução.
+    Considere a ordem de precedência dos operadores aritméticos.
+  </p>
+
+<pre>
+algoritmo "q21"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- 10 + (5 * 2)
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  <button onclick="mostrarResposta('resposta21')">Ver resposta</button>
+
+  <div id="resposta21" class="resposta">
+
+<pre>
+   Resultado = 20
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 22 -->
+<div class="questao">
+  <h2>Questão 22</h2>
+
+  <p>
+    Observe o algoritmo abaixo e identifique o valor final da variável
+    <strong>resultado</strong>. Considere que os parênteses alteram
+    a ordem natural de precedência das operações.
+  </p>
+
+<pre>
+algoritmo "q22"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- (10 + 5) * 2
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  <button onclick="mostrarResposta('resposta2')">Ver resposta</button>
+
+  <div id="resposta2" class="resposta">
+
+<pre>
+
+   resultado <- 30
+
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 23 -->
+<div class="questao">
+  <h2>Questão 23</h2>
+
+  <p>
+    Desenvolva um algoritmo para calcular a expressão aritmética  resultado = 20 / 2 + 3 * 4,
+    respeitando a ordem de precedência entre divisão e multiplicação.
+  </p>
+
+  <button onclick="mostrarResposta('resposta23')">Ver resposta</button>
+
+  <div id="resposta23" class="resposta">
+
+<pre>
+algoritmo "resposta23"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- (20 / 2) + (3 * 4)
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 24 -->
+<div class="questao">
+  <h2>Questão 24</h2>
+
+  <p>
+     A expressao resultado = 2 ^ 3 + 4 * 2  utiliza o operador de exponenciação.
+    Analise a expressão e determine o valor final da variável
+    <strong>resultado</strong>.
+  </p>
+
+  <button onclick="mostrarResposta('resposta24')">Ver resposta</button>
+
+  <div id="resposta24" class="resposta">
+
+<pre>
+algoritmo "resposta24"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- (2 ^ 3) + (4 * 2)
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 25 -->
+<div class="questao">
+  <h2>Questão 5</h2>
+
+  <p>
+    Analise a expressão, resultado = 25 % 4 + 6
+    construa um algoritmo abaixo que utiliza o operador módulo (%),
+    responsável por calcular o resto de uma divisão inteira.
+    Determine o valor final da variável <strong>resultado</strong>.
+  </p>
+
+  <button onclick="mostrarResposta('resposta25')">Ver resposta</button>
+
+  <div id="resposta25" class="resposta">
+
+<pre>
+algoritmo "resposta25"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- (25 % 4) + 6
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 26 -->
+<div class="questao">
+  <h2>Questão 26</h2>
+
+  <p>
+    Analise a expressão resultado = 18 / (3 * 2) + 5 ^ 2. Determine o valor final produzido
+    pelo algoritmo.
+  </p>
+
+  <button onclick="mostrarResposta('resposta26')">Ver resposta</button>
+
+  <div id="resposta26" class="resposta">
+
+<pre>
+algoritmo "resposta26"
+
+var
+   resultado: inteiro
+
+inicio
+
+   resultado <- 18 / (3 * 2) + (5 ^ 2)
+
+   escreval("Resultado = ", resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 27 -->
+<div class="questao">
+  <h2>Questão 27</h2>
+
+  <p>
+    Observe o algoritmo abaixo e informe qual será o valor lógico
+    armazenado na variável <strong>resultado</strong>.
+  </p>
+
+<pre>
+algoritmo "q27"
+
+var
+   resultado: logico
+
+inicio
+
+   resultado <- 10 > 5
+
+   escreval(resultado)
+
+fimalgoritmo
+</pre>
+
+</div>
+
+<!-- Questão 28 -->
+<div class="questao">
+  <h2>Questão 28</h2>
+
+  <p>
+    Crie um algoritmo para resolver a expressao relacional 8 + 2 = 15 - 5 considerando primeiro
+    as operações aritméticas e, em seguida, a comparação relacional.
+  </p>
+
+  <button onclick="mostrarResposta('resposta28')">Ver resposta</button>
+
+  <div id="resposta28" class="resposta">
+
+<pre>
+algoritmo "resposta28"
+
+var
+   resultado: logico
+
+inicio
+
+   resultado <- (8 + 2) = (15 - 5)
+
+   escreval(resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 29 -->
+<div class="questao">
+  <h2>Questão 29</h2>
+
+  <p>
+    Crie um algoritmo para resolver a expressão relacional 20 % 3 <> 2 e determine o valor lógico final da
+    variável <strong>resultado</strong>.
+  </p>
+
+  <button onclick="mostrarResposta('resposta29')">Ver resposta</button>
+
+  <div id="resposta29" class="resposta">
+
+<pre>
+algoritmo "resposta29"
+
+var
+   resultado: logico
+
+inicio
+
+   resultado <- (20 % 3) <> 2
+
+   escreval(resultado)
+
+fimalgoritmo
+</pre>
+
+  </div>
+</div>
+
+<!-- Questão 30 -->
+<div class="questao">
+  <h2>Questão 30</h2>
+
+  <p>
+    Analise o algoritmo abaixo e determine qual será o valor lógico
+    armazenado na variável <strong>resultado</strong>. Considere a
+    avaliação dos operadores relacionais <strong>>=</strong> (maior ou igual)
+    e <strong><=</strong> (menor ou igual).
+  </p>
+
+<pre>
+algoritmo "q30"
+
+var
+   resultado: logico
+
+inicio
+
+   resultado <- (15 >= 10) e (8 <= 12)
+
+   escreval(resultado)
+
+fimalgoritmo
+</pre>
+
+  
+</div>
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios 02 - Algoritmos</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<title>Lista de Exercícios 02 - Algoritmos</title>
+
+<!-- Questão 11 -->
+<div class="questao">
+  <h2>Questão 11</h2>
+
+  <p>
+    Desenvolva uma lógica que leia os valores de A, B e C de uma equação do
+    segundo grau e mostre o valor de Delta.
+  </p>
+
+  <pre>
+    Ex:
+    Digite o valor de A: 1
+    Digite o valor de B: 5
+    Digite o valor de C: 4
+
+    O valor de Delta é 9
+  </pre>
+
+  <button onclick="mostrarResposta('resposta11')">Ver resposta</button>
+
+  <div id="resposta11" class="resposta">
+
+    <pre>
+algoritmo "q11"
+
+var
+   a, b, c, delta: real
+
+inicio
+
+   escreva("Digite o valor de A: ")
+   leia(a)
+
+   escreva("Digite o valor de B: ")
+   leia(b)
+
+   escreva("Digite o valor de C: ")
+   leia(c)
+
+   delta <- (b * b) - (4 * a * c)
+
+   escreval("O valor de Delta é ", delta)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Digite o valor de A: 1
+Digite o valor de B: 5
+Digite o valor de C: 4
+
+O valor de Delta é 9
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 12 -->
+<div class="questao">
+  <h2>Questão 12</h2>
+
+  <p>
+    Crie um programa que leia o preço de um produto, calcule e mostre o seu
+    PREÇO PROMOCIONAL, com 5% de desconto.
+  </p>
+
+  <pre>
+    Ex:
+    Preço do produto: R$100.00
+
+    O preço promocional é R$95.0
+  </pre>
+
+  <button onclick="mostrarResposta('resposta12')">Ver resposta</button>
+
+  <div id="resposta12" class="resposta">
+
+    <pre>
+algoritmo "q12"
+
+var
+   preco, desconto, promocional: real
+
+inicio
+
+   escreva("Preço do produto: R$")
+   leia(preco)
+
+   desconto <- preco * 0.05
+   promocional <- preco - desconto
+
+   escreval("O preço promocional é R$", promocional)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Preço do produto: R$100.00
+
+O preço promocional é R$95.0
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 13 -->
+<div class="questao">
+  <h2>Questão 13</h2>
+
+  <p>
+    Faça um algoritmo que leia o salário de um funcionário, calcule e mostre o
+    seu novo salário, com 15% de aumento.
+  </p>
+
+  <pre>
+    Ex:
+    Salário atual: R$2000.00
+
+    O novo salário com aumento é R$2300.0
+  </pre>
+
+  <button onclick="mostrarResposta('resposta13')">Ver resposta</button>
+
+  <div id="resposta13" class="resposta">
+
+    <pre>
+algoritmo "q13"
+
+var
+   salario, aumento, novoSalario: real
+
+inicio
+
+   escreva("Salário atual: R$")
+   leia(salario)
+
+   aumento <- salario * 0.15
+   novoSalario <- salario + aumento
+
+   escreval("O novo salário com aumento é R$", novoSalario)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Salário atual: R$2000.00
+
+O novo salário com aumento é R$2300.0
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 14 -->
+<div class="questao">
+  <h2>Questão 14</h2>
+
+  <p>
+    A locadora de carros precisa da sua ajuda para cobrar seus serviços.
+    Escreva um programa que pergunte a quantidade de Km percorridos por um carro alugado
+    e a quantidade de dias pelos quais ele foi alugado. Calcule o preço total a pagar,
+    sabendo que o carro custa R$90 por dia e R$0,20 por Km rodado.
+  </p>
+
+  <pre>
+    Ex:
+    Quantidade de Km percorridos: 150
+    Quantidade de dias alugados: 3
+
+    O valor total a pagar é R$300.0
+  </pre>
+
+  <button onclick="mostrarResposta('resposta14')">Ver resposta</button>
+
+  <div id="resposta14" class="resposta">
+
+    <pre>
+algoritmo "q14"
+
+var
+   km, dias: real
+   total: real
+
+inicio
+
+   escreva("Quantidade de Km percorridos: ")
+   leia(km)
+
+   escreva("Quantidade de dias alugados: ")
+   leia(dias)
+
+   total <- (dias * 90) + (km * 0.20)
+
+   escreval("O valor total a pagar é R$", total)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Quantidade de Km percorridos: 150
+Quantidade de dias alugados: 3
+
+O valor total a pagar é R$300.0
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 15 -->
+<div class="questao">
+  <h2>Questão 15</h2>
+
+  <p>
+    Crie um programa que leia o número de dias trabalhados em um mês e mostre o
+    salário de um funcionário, sabendo que ele trabalha 8 horas por dia e ganha
+    R$25 por hora trabalhada.
+  </p>
+
+  <pre>
+    Ex:
+    Quantidade de dias trabalhados: 20
+
+    O salário do funcionário é R$4000.0
+  </pre>
+
+  <button onclick="mostrarResposta('resposta15')">Ver resposta</button>
+
+  <div id="resposta15" class="resposta">
+
+    <pre>
+algoritmo "q15"
+
+var
+   dias: inteiro
+   salario: real
+
+inicio
+
+   escreva("Quantidade de dias trabalhados: ")
+   leia(dias)
+
+   salario <- dias * 8 * 25
+
+   escreval("O salário do funcionário é R$", salario)
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Quantidade de dias trabalhados: 20
+
+O salário do funcionário é R$4000.0
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 16 -->
+<div class="questao">
+  <h2>Questão 16</h2>
+
+  <p>
+    Escreva um programa para calcular a redução do tempo de vida de um
+    fumante. Pergunte a quantidade de cigarros fumados por dia e quantos anos ele
+    já fumou. Considere que um fumante perde 10 minutos de vida a cada cigarro.
+    Calcule quantos dias de vida o fumante perdeu.
+  </p>
+
+  <pre>
+    Ex:
+    Quantidade de cigarros por dia: 10
+    Quantidade de anos fumando: 5
+
+    O fumante perdeu aproximadamente 126 dias de vida.
+  </pre>
+
+  <button onclick="mostrarResposta('resposta16')">Ver resposta</button>
+
+  <div id="resposta16" class="resposta">
+
+    <pre>
+algoritmo "q16"
+
+var
+   cigarrosDia, anos: inteiro
+   totalCigarros: inteiro
+   minutosPerdidos: inteiro
+   diasPerdidos: real
+
+inicio
+
+   escreva("Quantidade de cigarros por dia: ")
+   leia(cigarrosDia)
+
+   escreva("Quantidade de anos fumando: ")
+   leia(anos)
+
+   totalCigarros <- cigarrosDia * 365 * anos
+
+   minutosPerdidos <- totalCigarros * 10
+
+   diasPerdidos <- minutosPerdidos / 1440
+
+   escreval("O fumante perdeu aproximadamente ",
+             diasPerdidos,
+             " dias de vida.")
+
+fimalgoritmo
+    </pre>
+
+    <strong>Saída:</strong>
+
+    <pre>
+Quantidade de cigarros por dia: 10
+Quantidade de anos fumando: 5
+
+O fumante perdeu aproximadamente 126 dias de vida.
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 17 -->
+<div class="questao">
+  <h2>Questão 17</h2>
+
+  <p>
+    Faça um programa que leia a largura e o comprimento de um terreno,
+    calcule e mostre a sua área.
+  </p>
+
+  <pre>
+    Ex:
+    Largura do terreno: 10
+    Comprimento do terreno: 25
+
+    A área do terreno é 250.0m²
+  </pre>
+
+  <button onclick="mostrarResposta('resposta17')">Ver resposta</button>
+
+  <div id="resposta17" class="resposta">
+
+    <pre>
+algoritmo "q17"
+
+var
+   largura, comprimento, area: real
+
+inicio
+
+   escreva("Largura do terreno: ")
+   leia(largura)
+
+   escreva("Comprimento do terreno: ")
+   leia(comprimento)
+
+   area <- largura * comprimento
+
+   escreval("A área do terreno é ", area, "m²")
+
+fimalgoritmo
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 18 -->
+<div class="questao">
+  <h2>Questão 18</h2>
+
+  <p>
+    Desenvolva um algoritmo que leia um número inteiro e mostre na tela
+    o seu quadrado e a sua raiz quadrada.
+  </p>
+
+  <pre>
+    Ex:
+    Digite um número: 16
+
+    O quadrado de 16 é 256
+    A raiz quadrada de 16 é 4
+  </pre>
+
+  <button onclick="mostrarResposta('resposta18')">Ver resposta</button>
+
+  <div id="resposta18" class="resposta">
+
+    <pre>
+algoritmo "q18"
+
+var
+   numero: real
+
+inicio
+
+   escreva("Digite um número: ")
+   leia(numero)
+
+   escreval("O quadrado de ", numero,
+             " é ", numero * numero)
+
+   escreval("A raiz quadrada de ", numero,
+             " é ", raizq(numero))
+
+fimalgoritmo
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 19 -->
+<div class="questao">
+  <h2>Questão 19</h2>
+
+  <p>
+    Faça um programa que leia a idade de uma pessoa em anos e mostre essa
+    idade em meses e dias.
+  </p>
+
+  <pre>
+    Ex:
+    Digite sua idade: 18
+
+    Você já viveu aproximadamente:
+    216 meses
+    6570 dias
+  </pre>
+
+  <button onclick="mostrarResposta('resposta19')">Ver resposta</button>
+
+  <div id="resposta19" class="resposta">
+
+    <pre>
+algoritmo "q19"
+
+var
+   idade, meses, dias: inteiro
+
+inicio
+
+   escreva("Digite sua idade: ")
+   leia(idade)
+
+   meses <- idade * 12
+   dias <- idade * 365
+
+   escreval("Você já viveu aproximadamente:")
+   escreval(meses, " meses")
+   escreval(dias, " dias")
+
+fimalgoritmo
+    </pre>
+
+  </div>
+</div>
+
+<!-- Questão 20 -->
+<div class="questao">
+  <h2>Questão 20</h2>
+
+  <p>
+    Crie um algoritmo que leia o valor de um produto e a quantidade comprada.
+    Mostre o valor total da compra.
+  </p>
+
+  <pre>
+    Ex:
+    Valor do produto: 15
+    Quantidade comprada: 4
+
+    O valor total da compra é R$60.0
+  </pre>
+
+  <button onclick="mostrarResposta('resposta20')">Ver resposta</button>
+
+  <div id="resposta20" class="resposta">
+
+    <pre>
+algoritmo "q20"
+
+var
+   valorProduto, total: real
+   quantidade: inteiro
+
+inicio
+
+   escreva("Valor do produto: ")
+   leia(valorProduto)
+
+   escreva("Quantidade comprada: ")
+   leia(quantidade)
+
+   total <- valorProduto * quantidade
+
+   escreval("O valor total da compra é R$", total)
+
+fimalgoritmo
+    </pre>
+
+  </div>
+</div>
+
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
