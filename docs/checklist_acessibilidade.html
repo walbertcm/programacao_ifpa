@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Checklist de Acessibilidade - Laboratório de Informática</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background: #f4f6f8;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h1 {
+      color: #1f4e79;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1f4e79;
+      border-bottom: 2px solid #1f4e79;
+      padding-bottom: 5px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #1f4e79;
+      color: white;
+    }
+
+    button {
+      background: #1f4e79;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #163955;
+    }
+
+    .resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef5fb;
+      border-left: 5px solid #1f4e79;
+      font-size: 18px;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      cursor: help;
+      color: #1f4e79;
+      font-weight: bold;
+      margin-left: 6px;
+    }
+
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 280px;
+      background-color: #333;
+      color: #fff;
+      text-align: left;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 10;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -140px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .escala {
+      background: #f0f4f8;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>Checklist Digital de Acessibilidade em Laboratório de Informática</h1>
+
+  <label>Nome do laboratório:</label>
+  <input type="text" id="laboratorio">
+
+  <label>Instituição:</label>
+  <input type="text" id="instituicao">
+
+  <label>Avaliador:</label>
+  <input type="text" id="avaliador">
+
+  <label>Data da avaliação:</label>
+  <input type="date" id="data">
+
+  <div class="escala">
+    <strong>Escala de Avaliação:</strong><br>
+    0 = Inexistente |
+    1 = Insuficiente |
+    2 = Parcialmente adequado |
+    3 = Adequado
+  </div>
+
+  <div id="checklist"></div>
+
+  <button onclick="calcularResultado()">Calcular Resultado</button>
+
+  <div class="resultado" id="resultado">
+    O resultado da avaliação será exibido aqui.
+  </div>
+
+</div>
+
+<script>
+const categorias = {
+  "Acessibilidade Arquitetônica": [
+    {
+      item: "Porta com largura mínima adequada",
+      ajuda: "Verificar se a porta possui vão livre mínimo de 0,80 m, conforme a ABNT NBR 9050:2020."
+    },
+    {
+      item: "Corredores permitem circulação segura",
+      ajuda: "Observar se há espaço livre para circulação sem obstáculos, fios, móveis ou equipamentos bloqueando a passagem."
+    },
+    {
+      item: "Há área para manobra de cadeira de rodas",
+      ajuda: "Verificar se existe área suficiente para giro de cadeira de rodas, preferencialmente com diâmetro de 1,50 m."
+    },
+    {
+      item: "Mesas ou bancadas possuem altura acessível",
+      ajuda: "A altura recomendada para mesas ou bancadas acessíveis deve estar entre 0,75 m e 0,85 m."
+    },
+    {
+      item: "Existe espaço livre inferior para aproximação frontal",
+      ajuda: "Verificar se há espaço livre sob a mesa para aproximação de pessoa em cadeira de rodas."
+    },
+    {
+      item: "O piso é regular, firme e sem obstáculos",
+      ajuda: "Avaliar se o piso não possui desníveis, buracos, fios soltos ou objetos que dificultem a circulação."
+    },
+    {
+      item: "Há rota acessível até o laboratório",
+      ajuda: "Verificar se o caminho até o laboratório possui rampas, corredores adequados e ausência de barreiras físicas."
+    },
+    {
+      item: "Há sinalização visual e/ou tátil",
+      ajuda: "Observar se existem placas, identificação em braile, piso tátil ou sinalização visual adequada."
+    }
+  ],
+
+  "Acessibilidade Tecnológica": [
+    {
+      item: "Computadores possuem recursos de acessibilidade ativáveis",
+      ajuda: "Verificar se os sistemas operacionais possuem recursos como lupa, contraste, teclado virtual e narrador."
+    },
+    {
+      item: "Há leitor de tela instalado",
+      ajuda: "Verificar presença de leitores de tela, como NVDA, DOSVOX, Orca ou recursos nativos do sistema."
+    },
+    {
+      item: "Há possibilidade de ampliação de fonte e contraste",
+      ajuda: "Avaliar se o estudante pode aumentar fontes, alterar contraste e ajustar a interface visual."
+    },
+    {
+      item: "Teclado e mouse são utilizáveis por diferentes perfis de estudantes",
+      ajuda: "Observar se teclado e mouse estão em boas condições e se podem ser usados por estudantes com limitações motoras."
+    },
+    {
+      item: "Existem recursos alternativos de entrada",
+      ajuda: "Verificar se há teclado adaptado, mouse especial, acionadores, trackball ou outros dispositivos assistivos."
+    },
+    {
+      item: "Os softwares utilizados são compatíveis com tecnologias assistivas",
+      ajuda: "Verificar se os programas usados nas aulas funcionam com leitores de tela, navegação por teclado e ampliação."
+    },
+    {
+      item: "O ambiente virtual de aprendizagem é acessível",
+      ajuda: "Avaliar se o AVA possui navegação por teclado, contraste adequado, textos alternativos e compatibilidade com leitores de tela."
+    },
+    {
+      item: "Há acesso à internet estável para uso de recursos assistivos",
+      ajuda: "Verificar se a conexão permite uso de ferramentas online de acessibilidade, tradutores, leitores e materiais digitais."
+    }
+  ],
+
+  "Acessibilidade Pedagógica": [
+    {
+      item: "Materiais didáticos digitais estão em formato acessível",
+      ajuda: "Verificar se arquivos PDF, slides, textos e atividades podem ser lidos por leitores de tela e possuem estrutura adequada."
+    },
+    {
+      item: "Docentes conhecem recursos básicos de acessibilidade",
+      ajuda: "Avaliar se os professores sabem utilizar recursos como legenda, leitor de tela, ampliação e adaptação de materiais."
+    },
+    {
+      item: "Atividades práticas podem ser adaptadas",
+      ajuda: "Verificar se as práticas no laboratório podem ser ajustadas conforme as necessidades dos estudantes."
+    },
+    {
+      item: "Há alternativas para estudantes com deficiência visual",
+      ajuda: "Observar se existem descrições textuais, leitores de tela, materiais em áudio ou apoio para atividades visuais."
+    },
+    {
+      item: "Há alternativas para estudantes com deficiência auditiva",
+      ajuda: "Verificar se há legendas, Libras, transcrição textual ou estratégias visuais de comunicação."
+    },
+    {
+      item: "As avaliações permitem adaptações razoáveis",
+      ajuda: "Verificar se há possibilidade de tempo adicional, formato alternativo de prova ou uso de tecnologia assistiva."
+    },
+    {
+      item: "Há orientação institucional para atendimento educacional especializado",
+      ajuda: "Verificar se existe setor, núcleo ou procedimento institucional para apoiar estudantes com deficiência."
+    }
+  ],
+
+  "Acessibilidade Atitudinal e Institucional": [
+    {
+      item: "Docentes e técnicos demonstram disponibilidade para apoiar estudantes com deficiência",
+      ajuda: "Avaliar se a equipe demonstra postura acolhedora, respeitosa e colaborativa."
+    },
+    {
+      item: "A instituição possui política de inclusão conhecida pela equipe",
+      ajuda: "Verificar se docentes e técnicos conhecem normas, setores e procedimentos institucionais de acessibilidade."
+    },
+    {
+      item: "Há canal para solicitação de adaptações",
+      ajuda: "Verificar se estudantes sabem onde solicitar apoio, recursos ou adaptações pedagógicas."
+    },
+    {
+      item: "Estudantes com deficiência são consultados sobre suas necessidades",
+      ajuda: "Avaliar se a instituição considera a escuta do estudante na definição das adaptações."
+    },
+    {
+      item: "Há formação periódica sobre acessibilidade e inclusão",
+      ajuda: "Verificar se são ofertados cursos, oficinas ou capacitações sobre inclusão e tecnologias assistivas."
+    },
+    {
+      item: "O laboratório não utiliza espaços acessíveis como depósito",
+      ajuda: "Verificar se rampas, corredores, mesas acessíveis ou equipamentos assistivos não estão bloqueados ou inutilizados."
+    },
+    {
+      item: "Há manutenção periódica dos recursos de acessibilidade",
+      ajuda: "Avaliar se equipamentos, softwares, sinalizações e mobiliários acessíveis são mantidos em funcionamento."
+    }
+  ]
+};
+
+function gerarChecklist() {
+  const div = document.getElementById("checklist");
+
+  for (const categoria in categorias) {
+    let html = `<h2>${categoria}</h2>`;
+
+    html += `
+      <table>
+        <tr>
+          <th>Elemento avaliado</th>
+          <th>Nota</th>
+          <th>Observações / Evidências</th>
+        </tr>
+    `;
+
+    categorias[categoria].forEach((criterio, index) => {
+      html += `
+        <tr>
+          <td>
+            ${criterio.item}
+            <span class="tooltip">?
+              <span class="tooltiptext">${criterio.ajuda}</span>
+            </span>
+          </td>
+
+          <td>
+            <select class="nota" data-categoria="${categoria}">
+              <option value="">Selecione</option>
+              <option value="0">0 - Inexistente</option>
+              <option value="1">1 - Insuficiente</option>
+              <option value="2">2 - Parcialmente adequado</option>
+              <option value="3">3 - Adequado</option>
+            </select>
+          </td>
+
+          <td>
+            <textarea rows="2" placeholder="Descreva medidas, fotos, barreiras observadas ou recomendações"></textarea>
+          </td>
+        </tr>
+      `;
+    });
+
+    html += `</table>`;
+    div.innerHTML += html;
+  }
+}
+
+function calcularResultado() {
+  const notas = document.querySelectorAll(".nota");
+
+  let soma = 0;
+  let total = 0;
+
+  let categoriasResultado = {};
+
+  notas.forEach(nota => {
+    const categoria = nota.dataset.categoria;
+
+    if (!categoriasResultado[categoria]) {
+      categoriasResultado[categoria] = {
+        soma: 0,
+        total: 0
+      };
+    }
+
+    if (nota.value !== "") {
+      const valor = Number(nota.value);
+
+      soma += valor;
+      total++;
+
+      categoriasResultado[categoria].soma += valor;
+      categoriasResultado[categoria].total++;
+    }
+  });
+
+  if (total === 0) {
+    document.getElementById("resultado").innerHTML =
+      "Nenhum item foi avaliado.";
+    return;
+  }
+
+  const mediaGeral = soma / total;
+  let classificacao = classificar(mediaGeral);
+
+  let html = `
+    <strong>Média geral:</strong> ${mediaGeral.toFixed(2)} de 3<br>
+    <strong>Classificação geral:</strong> ${classificacao}<br><br>
+    <strong>Resultado por dimensão:</strong><br>
+  `;
+
+  for (const categoria in categoriasResultado) {
+    const dados = categoriasResultado[categoria];
+
+    if (dados.total > 0) {
+      const media = dados.soma / dados.total;
+
+      html += `
+        ${categoria}: ${media.toFixed(2)} de 3 
+        - ${classificar(media)}<br>
+      `;
+    }
+  }
+
+  document.getElementById("resultado").innerHTML = html;
+}
+
+function classificar(media) {
+  if (media < 1) {
+    return "Inadequado";
+  } else if (media < 2) {
+    return "Parcialmente acessível";
+  } else if (media < 2.6) {
+    return "Acessível com ajustes";
+  } else {
+    return "Adequado";
+  }
+}
+
+gerarChecklist();
+</script>
+
+</body>
+</html>
