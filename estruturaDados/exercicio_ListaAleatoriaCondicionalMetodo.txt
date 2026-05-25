@@ -1,0 +1,84 @@
+import java.util.ArrayList;
+import java.util.Random;
+
+public class ListaAleatoriaCondicionalMetodoRemocao {
+
+public static void main(String[] args) {
+
+    // Criando o ArrayList
+    ArrayList<Integer> numeros = new ArrayList<>();
+
+    // Gerador de numeros aleatorios
+    Random random = new Random();
+
+    // Gerando 100 numeros aleatorios
+    for (int i = 0; i < 100; i++) {
+
+        // Numeros entre 1 e 100
+        int numero = random.nextInt(100) + 1;
+
+        numeros.add(numero);
+    }
+
+    // Exibindo a lista original
+    System.out.println("Lista original:");
+    System.out.println(numeros);
+
+    // Obtendo o penultimo elemento
+    int penultimo = numeros.get(numeros.size() - 2);
+
+    System.out.println(
+        "\nPenultimo numero: " + penultimo
+    );
+
+    // Estrutura condicional
+    if (penultimo > 50) {
+
+        numeros.add(51, 33);
+
+        System.out.println(
+            "\nO numero 33 foi adicionado na posicao 51."
+        );
+
+    } else {
+
+        numeros.add(51, 99);
+
+        System.out.println(
+            "\nO numero 99 foi adicionado na posicao 51."
+        );
+    }
+
+    // Removendo elementos duplicados
+    removerDuplicados(numeros);
+
+    // Exibindo a lista final
+    System.out.println(
+        "\nLista sem elementos duplicados:"
+    );
+
+    System.out.println(numeros);
+}
+
+// Metodo para remover elementos duplicados
+public static void removerDuplicados(
+    ArrayList<Integer> lista
+) {
+
+    for (int i = 0; i < lista.size(); i++) {
+
+        for (int j = i + 1;
+             j < lista.size();
+             j++) {
+
+            // Verificando elementos repetidos
+            if (lista.get(i).equals(lista.get(j))) {
+
+                lista.remove(j);
+
+                // Ajustando o indice
+                j--;
+            }
+        }
+    }
+}

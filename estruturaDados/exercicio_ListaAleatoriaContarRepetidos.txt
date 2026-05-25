@@ -1,0 +1,46 @@
+public static void contarRepetidos(
+ArrayList<Integer> lista
+) {
+
+for (int i = 0; i < lista.size(); i++) {
+
+    int contador = 0;
+
+    for (int j = 0; j < lista.size(); j++) {
+
+        if (lista.get(i).equals(lista.get(j))) {
+
+            contador++;
+        }
+    }
+
+    // Exibe apenas elementos repetidos
+    if (contador > 1) {
+
+        boolean jaExibido = false;
+
+        // Verifica se o numero ja foi mostrado
+        for (int k = 0; k < i; k++) {
+
+            if (lista.get(i).equals(lista.get(k))) {
+
+                jaExibido = true;
+                break;
+            }
+        }
+
+        // Exibe somente uma vez
+        if (!jaExibido) {
+
+            System.out.println(
+                "Numero "
+                + lista.get(i)
+                + " aparece "
+                + contador
+                + " vezes"
+            );
+        }
+    }
+}
+
+}
