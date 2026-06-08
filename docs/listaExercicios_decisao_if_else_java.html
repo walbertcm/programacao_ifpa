@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios - Decisão if else em Java</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  h1 {
+    color: #1f2937;
+  }
+
+  .descricao {
+    background: #ffffff;
+    padding: 18px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #111827;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    overflow-x: auto;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #1b5fc4;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Lista de Exercícios - Decisão com if...else em Java</h1>
+
+<div class="descricao">
+  <p>Esta lista contém 10 questões de algoritmos envolvendo estrutura de decisão, sendo 5 de nível fácil e 5 de nível médio-fácil. As respostas estão escritas em Java.</p>
+</div>
+
+
+<!-- Questão 1 -->
+<div class="questao">
+  <h2>Questão 1 - Número positivo ou negativo</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia um número inteiro e informe se ele é positivo ou negativo.</p>
+
+  <button onclick="mostrarResposta('resposta1')">Ver resposta</button>
+
+  <div id="resposta1" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao01 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int numero;
+
+        System.out.print(&quot;Digite um número inteiro: &quot;);
+        numero = entrada.nextInt();
+
+        if (numero &gt;= 0) {
+            System.out.println(&quot;O número é positivo.&quot;);
+        } else {
+            System.out.println(&quot;O número é negativo.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 2 -->
+<div class="questao">
+  <h2>Questão 2 - Maioridade</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia a idade de uma pessoa e informe se ela é maior de idade ou menor de idade. Considere maior de idade quem tem 18 anos ou mais.</p>
+
+  <button onclick="mostrarResposta('resposta2')">Ver resposta</button>
+
+  <div id="resposta2" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao02 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int idade;
+
+        System.out.print(&quot;Digite sua idade: &quot;);
+        idade = entrada.nextInt();
+
+        if (idade &gt;= 18) {
+            System.out.println(&quot;Você é maior de idade.&quot;);
+        } else {
+            System.out.println(&quot;Você é menor de idade.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 3 -->
+<div class="questao">
+  <h2>Questão 3 - Número par ou ímpar</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia um número inteiro e informe se ele é par ou ímpar.</p>
+
+  <button onclick="mostrarResposta('resposta3')">Ver resposta</button>
+
+  <div id="resposta3" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao03 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int numero;
+
+        System.out.print(&quot;Digite um número inteiro: &quot;);
+        numero = entrada.nextInt();
+
+        if (numero % 2 == 0) {
+            System.out.println(&quot;O número é par.&quot;);
+        } else {
+            System.out.println(&quot;O número é ímpar.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 4 -->
+<div class="questao">
+  <h2>Questão 4 - Nota aprovado ou reprovado</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia a nota de um aluno e informe se ele foi aprovado ou reprovado. Considere aprovado o aluno com nota maior ou igual a 7.</p>
+
+  <button onclick="mostrarResposta('resposta4')">Ver resposta</button>
+
+  <div id="resposta4" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao04 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        double nota;
+
+        System.out.print(&quot;Digite a nota do aluno: &quot;);
+        nota = entrada.nextDouble();
+
+        if (nota &gt;= 7) {
+            System.out.println(&quot;Aluno aprovado.&quot;);
+        } else {
+            System.out.println(&quot;Aluno reprovado.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 5 -->
+<div class="questao">
+  <h2>Questão 5 - Senha correta</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia uma senha numérica e informe se a senha digitada está correta. Considere que a senha correta é 1234.</p>
+
+  <button onclick="mostrarResposta('resposta5')">Ver resposta</button>
+
+  <div id="resposta5" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao05 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int senha;
+
+        System.out.print(&quot;Digite a senha: &quot;);
+        senha = entrada.nextInt();
+
+        if (senha == 1234) {
+            System.out.println(&quot;Acesso permitido.&quot;);
+        } else {
+            System.out.println(&quot;Senha incorreta.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 6 -->
+<div class="questao">
+  <h2>Questão 6 - Maior entre dois números</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia dois números inteiros e informe qual deles é o maior. Caso sejam iguais, informe que os valores são iguais.</p>
+
+  <button onclick="mostrarResposta('resposta6')">Ver resposta</button>
+
+  <div id="resposta6" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao06 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        int n1, n2;
+
+        System.out.print(&quot;Digite o primeiro número: &quot;);
+        n1 = entrada.nextInt();
+
+        System.out.print(&quot;Digite o segundo número: &quot;);
+        n2 = entrada.nextInt();
+
+        if (n1 &gt; n2) {
+            System.out.println(&quot;O maior número é: &quot; + n1);
+        } else {
+            if (n2 &gt; n1) {
+                System.out.println(&quot;O maior número é: &quot; + n2);
+            } else {
+                System.out.println(&quot;Os dois números são iguais.&quot;);
+            }
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 7 -->
+<div class="questao">
+  <h2>Questão 7 - Média de duas notas</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia duas notas de um aluno, calcule a média e informe se ele foi aprovado ou reprovado. Considere aprovado quem tiver média maior ou igual a 7.</p>
+
+  <button onclick="mostrarResposta('resposta7')">Ver resposta</button>
+
+  <div id="resposta7" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao07 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        double nota1, nota2, media;
+
+        System.out.print(&quot;Digite a primeira nota: &quot;);
+        nota1 = entrada.nextDouble();
+
+        System.out.print(&quot;Digite a segunda nota: &quot;);
+        nota2 = entrada.nextDouble();
+
+        media = (nota1 + nota2) / 2;
+
+        System.out.println(&quot;Média: &quot; + media);
+
+        if (media &gt;= 7) {
+            System.out.println(&quot;Aluno aprovado.&quot;);
+        } else {
+            System.out.println(&quot;Aluno reprovado.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 8 -->
+<div class="questao">
+  <h2>Questão 8 - Desconto em compra</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia o valor de uma compra. Se o valor for maior ou igual a R$ 100,00, aplique um desconto de 10%. Caso contrário, não aplique desconto. Ao final, mostre o valor final da compra.</p>
+
+  <button onclick="mostrarResposta('resposta8')">Ver resposta</button>
+
+  <div id="resposta8" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao08 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        double valorCompra, valorFinal;
+
+        System.out.print(&quot;Digite o valor da compra: R$ &quot;);
+        valorCompra = entrada.nextDouble();
+
+        if (valorCompra &gt;= 100) {
+            valorFinal = valorCompra - (valorCompra * 0.10);
+        } else {
+            valorFinal = valorCompra;
+        }
+
+        System.out.println(&quot;Valor final da compra: R$ &quot; + valorFinal);
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 9 -->
+<div class="questao">
+  <h2>Questão 9 - Verificação de temperatura</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia a temperatura de uma pessoa. Se a temperatura for maior ou igual a 37.8, informe que a pessoa está com febre. Caso contrário, informe que a temperatura está normal.</p>
+
+  <button onclick="mostrarResposta('resposta9')">Ver resposta</button>
+
+  <div id="resposta9" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao09 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        double temperatura;
+
+        System.out.print(&quot;Digite a temperatura: &quot;);
+        temperatura = entrada.nextDouble();
+
+        if (temperatura &gt;= 37.8) {
+            System.out.println(&quot;A pessoa está com febre.&quot;);
+        } else {
+            System.out.println(&quot;Temperatura normal.&quot;);
+        }
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 10 -->
+<div class="questao">
+  <h2>Questão 10 - Cálculo de salário com bônus</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia o salário de um funcionário. Se o salário for menor ou igual a R$ 1500,00, aplique um bônus de R$ 200,00. Caso contrário, aplique um bônus de R$ 100,00. Ao final, mostre o novo salário.</p>
+
+  <button onclick="mostrarResposta('resposta10')">Ver resposta</button>
+
+  <div id="resposta10" class="resposta">
+    <pre>import java.util.Scanner;
+
+public class Questao10 {
+    public static void main(String[] args) {
+        Scanner entrada = new Scanner(System.in);
+
+        double salario, novoSalario;
+
+        System.out.print(&quot;Digite o salário do funcionário: R$ &quot;);
+        salario = entrada.nextDouble();
+
+        if (salario &lt;= 1500) {
+            novoSalario = salario + 200;
+        } else {
+            novoSalario = salario + 100;
+        }
+
+        System.out.println(&quot;Novo salário: R$ &quot; + novoSalario);
+
+        entrada.close();
+    }
+}</pre>
+  </div>
+</div>
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

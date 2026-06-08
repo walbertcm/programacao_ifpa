@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Exercícios - Decisão if else em Java com JOptionPane</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+  }
+
+  h1 {
+    color: #1f2937;
+  }
+
+  .descricao {
+    background: #ffffff;
+    padding: 18px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #111827;
+  }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-left: 5px solid #2c7be5;
+  }
+
+  pre {
+    background: #eeeeee;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    overflow-x: auto;
+  }
+
+  button {
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background: #1b5fc4;
+  }
+
+  .resposta {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-left: 4px solid #2e7d32;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>Lista de Exercícios - Decisão com if...else em Java usando JOptionPane</h1>
+
+<div class="descricao">
+  <p>Esta lista contém 10 questões de algoritmos envolvendo estrutura de decisão, sendo 5 de nível fácil e 5 de nível médio-fácil. As respostas estão escritas em Java usando a classe <strong>JOptionPane</strong> para entrada e saída de dados.</p>
+</div>
+
+
+<!-- Questão 1 -->
+<div class="questao">
+  <h2>Questão 1 - Número positivo ou negativo</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia um número inteiro e informe se ele é positivo ou negativo.</p>
+
+  <button onclick="mostrarResposta('resposta1')">Ver resposta</button>
+
+  <div id="resposta1" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao01 {
+    public static void main(String[] args) {
+        int numero;
+
+        numero = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite um número inteiro:&quot;)
+        );
+
+        if (numero &gt;= 0) {
+            JOptionPane.showMessageDialog(null, &quot;O número é positivo.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;O número é negativo.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 2 -->
+<div class="questao">
+  <h2>Questão 2 - Maioridade</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia a idade de uma pessoa e informe se ela é maior de idade ou menor de idade. Considere maior de idade quem tem 18 anos ou mais.</p>
+
+  <button onclick="mostrarResposta('resposta2')">Ver resposta</button>
+
+  <div id="resposta2" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao02 {
+    public static void main(String[] args) {
+        int idade;
+
+        idade = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite sua idade:&quot;)
+        );
+
+        if (idade &gt;= 18) {
+            JOptionPane.showMessageDialog(null, &quot;Você é maior de idade.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;Você é menor de idade.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 3 -->
+<div class="questao">
+  <h2>Questão 3 - Número par ou ímpar</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia um número inteiro e informe se ele é par ou ímpar.</p>
+
+  <button onclick="mostrarResposta('resposta3')">Ver resposta</button>
+
+  <div id="resposta3" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao03 {
+    public static void main(String[] args) {
+        int numero;
+
+        numero = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite um número inteiro:&quot;)
+        );
+
+        if (numero % 2 == 0) {
+            JOptionPane.showMessageDialog(null, &quot;O número é par.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;O número é ímpar.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 4 -->
+<div class="questao">
+  <h2>Questão 4 - Nota aprovado ou reprovado</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia a nota de um aluno e informe se ele foi aprovado ou reprovado. Considere aprovado o aluno com nota maior ou igual a 7.</p>
+
+  <button onclick="mostrarResposta('resposta4')">Ver resposta</button>
+
+  <div id="resposta4" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao04 {
+    public static void main(String[] args) {
+        double nota;
+
+        nota = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite a nota do aluno:&quot;)
+        );
+
+        if (nota &gt;= 7) {
+            JOptionPane.showMessageDialog(null, &quot;Aluno aprovado.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;Aluno reprovado.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 5 -->
+<div class="questao">
+  <h2>Questão 5 - Senha correta</h2>
+  <p><strong>Nível:</strong> Fácil</p>
+  <p>Crie um programa que leia uma senha numérica e informe se a senha digitada está correta. Considere que a senha correta é 1234.</p>
+
+  <button onclick="mostrarResposta('resposta5')">Ver resposta</button>
+
+  <div id="resposta5" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao05 {
+    public static void main(String[] args) {
+        int senha;
+
+        senha = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite a senha:&quot;)
+        );
+
+        if (senha == 1234) {
+            JOptionPane.showMessageDialog(null, &quot;Acesso permitido.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;Senha incorreta.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 6 -->
+<div class="questao">
+  <h2>Questão 6 - Maior entre dois números</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia dois números inteiros e informe qual deles é o maior. Caso sejam iguais, informe que os valores são iguais.</p>
+
+  <button onclick="mostrarResposta('resposta6')">Ver resposta</button>
+
+  <div id="resposta6" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao06 {
+    public static void main(String[] args) {
+        int n1, n2;
+
+        n1 = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite o primeiro número:&quot;)
+        );
+
+        n2 = Integer.parseInt(
+            JOptionPane.showInputDialog(&quot;Digite o segundo número:&quot;)
+        );
+
+        if (n1 &gt; n2) {
+            JOptionPane.showMessageDialog(null, &quot;O maior número é: &quot; + n1);
+        } else {
+            if (n2 &gt; n1) {
+                JOptionPane.showMessageDialog(null, &quot;O maior número é: &quot; + n2);
+            } else {
+                JOptionPane.showMessageDialog(null, &quot;Os dois números são iguais.&quot;);
+            }
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 7 -->
+<div class="questao">
+  <h2>Questão 7 - Média de duas notas</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia duas notas de um aluno, calcule a média e informe se ele foi aprovado ou reprovado. Considere aprovado quem tiver média maior ou igual a 7.</p>
+
+  <button onclick="mostrarResposta('resposta7')">Ver resposta</button>
+
+  <div id="resposta7" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao07 {
+    public static void main(String[] args) {
+        double nota1, nota2, media;
+
+        nota1 = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite a primeira nota:&quot;)
+        );
+
+        nota2 = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite a segunda nota:&quot;)
+        );
+
+        media = (nota1 + nota2) / 2;
+
+        if (media &gt;= 7) {
+            JOptionPane.showMessageDialog(null, &quot;Média: &quot; + media + &quot;\nAluno aprovado.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;Média: &quot; + media + &quot;\nAluno reprovado.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 8 -->
+<div class="questao">
+  <h2>Questão 8 - Desconto em compra</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia o valor de uma compra. Se o valor for maior ou igual a R$ 100,00, aplique um desconto de 10%. Caso contrário, não aplique desconto. Ao final, mostre o valor final da compra.</p>
+
+  <button onclick="mostrarResposta('resposta8')">Ver resposta</button>
+
+  <div id="resposta8" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao08 {
+    public static void main(String[] args) {
+        double valorCompra, valorFinal;
+
+        valorCompra = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite o valor da compra:&quot;)
+        );
+
+        if (valorCompra &gt;= 100) {
+            valorFinal = valorCompra - (valorCompra * 0.10);
+        } else {
+            valorFinal = valorCompra;
+        }
+
+        JOptionPane.showMessageDialog(null, &quot;Valor final da compra: R$ &quot; + valorFinal);
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 9 -->
+<div class="questao">
+  <h2>Questão 9 - Verificação de temperatura</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia a temperatura de uma pessoa. Se a temperatura for maior ou igual a 37.8, informe que a pessoa está com febre. Caso contrário, informe que a temperatura está normal.</p>
+
+  <button onclick="mostrarResposta('resposta9')">Ver resposta</button>
+
+  <div id="resposta9" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao09 {
+    public static void main(String[] args) {
+        double temperatura;
+
+        temperatura = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite a temperatura:&quot;)
+        );
+
+        if (temperatura &gt;= 37.8) {
+            JOptionPane.showMessageDialog(null, &quot;A pessoa está com febre.&quot;);
+        } else {
+            JOptionPane.showMessageDialog(null, &quot;Temperatura normal.&quot;);
+        }
+    }
+}</pre>
+  </div>
+</div>
+
+<!-- Questão 10 -->
+<div class="questao">
+  <h2>Questão 10 - Cálculo de salário com bônus</h2>
+  <p><strong>Nível:</strong> Médio-fácil</p>
+  <p>Crie um programa que leia o salário de um funcionário. Se o salário for menor ou igual a R$ 1500,00, aplique um bônus de R$ 200,00. Caso contrário, aplique um bônus de R$ 100,00. Ao final, mostre o novo salário.</p>
+
+  <button onclick="mostrarResposta('resposta10')">Ver resposta</button>
+
+  <div id="resposta10" class="resposta">
+    <pre>import javax.swing.JOptionPane;
+
+public class Questao10 {
+    public static void main(String[] args) {
+        double salario, novoSalario;
+
+        salario = Double.parseDouble(
+            JOptionPane.showInputDialog(&quot;Digite o salário do funcionário:&quot;)
+        );
+
+        if (salario &lt;= 1500) {
+            novoSalario = salario + 200;
+        } else {
+            novoSalario = salario + 100;
+        }
+
+        JOptionPane.showMessageDialog(null, &quot;Novo salário: R$ &quot; + novoSalario);
+    }
+}</pre>
+  </div>
+</div>
+
+
+<script>
+function mostrarResposta(id) {
+  const resposta = document.getElementById(id);
+
+  if (resposta.style.display === "none" || resposta.style.display === "") {
+    resposta.style.display = "block";
+  } else {
+    resposta.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
