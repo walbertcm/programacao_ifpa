@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Lista de Exercícios - Decisão com Se e Senão</title>
+<title>Lista de Exercícios - Condicional Se</title>
 
 <style>
   body {
@@ -70,19 +70,18 @@
 
 <body>
 
-<h1>Lista de Exercícios - Algoritmos com Decisão</h1>
-<p class="subtitulo">Conteúdo: estrutura condicional <strong>se...senao</strong> em Portugol, compatível com VisualG.</p>
+<h1>Lista de Exercícios - Algoritmos com Condicional Se</h1>
 
 <!-- Questão 1 -->
 <div class="questao">
   <h2>Questão 1</h2>
-  <p>Crie um algoritmo que leia um número inteiro e informe se ele é positivo ou negativo.</p>
+  <p>Crie um algoritmo que leia um número inteiro. Se o número for positivo, mostre a mensagem: "Número positivo".</p>
 
   <button onclick="mostrarResposta('resposta1')">Ver resposta</button>
 
   <div id="resposta1" class="resposta">
     <pre>
-algoritmo "positivo_ou_negativo"
+algoritmo "verifica_numero_positivo"
 
 var
    numero: inteiro
@@ -91,10 +90,8 @@ inicio
    escreva("Digite um número inteiro: ")
    leia(numero)
 
-   se numero &gt;= 0 entao
-      escreval("O número é positivo.")
-   senao
-      escreval("O número é negativo.")
+   se numero &gt; 0 entao
+      escreval("Número positivo.")
    fimse
 
 fimalgoritmo
@@ -105,25 +102,23 @@ fimalgoritmo
 <!-- Questão 2 -->
 <div class="questao">
   <h2>Questão 2</h2>
-  <p>Crie um algoritmo que leia a idade de uma pessoa e informe se ela é maior de idade ou menor de idade. Considere maior de idade quem tem 18 anos ou mais.</p>
+  <p>Crie um algoritmo que leia a idade de uma pessoa. Se a idade for maior ou igual a 18, mostre a mensagem: "Maior de idade".</p>
 
   <button onclick="mostrarResposta('resposta2')">Ver resposta</button>
 
   <div id="resposta2" class="resposta">
     <pre>
-algoritmo "maioridade"
+algoritmo "verifica_maioridade"
 
 var
    idade: inteiro
 
 inicio
-   escreva("Digite sua idade: ")
+   escreva("Digite a idade: ")
    leia(idade)
 
    se idade &gt;= 18 entao
-      escreval("Você é maior de idade.")
-   senao
-      escreval("Você é menor de idade.")
+      escreval("Maior de idade.")
    fimse
 
 fimalgoritmo
@@ -134,13 +129,13 @@ fimalgoritmo
 <!-- Questão 3 -->
 <div class="questao">
   <h2>Questão 3</h2>
-  <p>Crie um algoritmo que leia um número inteiro e informe se ele é par ou ímpar.</p>
+  <p>Crie um algoritmo que leia um número inteiro. Se o número for par, mostre a mensagem: "Número par".</p>
 
   <button onclick="mostrarResposta('resposta3')">Ver resposta</button>
 
   <div id="resposta3" class="resposta">
     <pre>
-algoritmo "par_ou_impar"
+algoritmo "verifica_numero_par"
 
 var
    numero: inteiro
@@ -150,9 +145,7 @@ inicio
    leia(numero)
 
    se numero mod 2 = 0 entao
-      escreval("O número é par.")
-   senao
-      escreval("O número é ímpar.")
+      escreval("Número par.")
    fimse
 
 fimalgoritmo
@@ -163,13 +156,13 @@ fimalgoritmo
 <!-- Questão 4 -->
 <div class="questao">
   <h2>Questão 4</h2>
-  <p>Crie um algoritmo que leia a nota de um aluno e informe se ele foi aprovado ou reprovado. Considere aprovado o aluno com nota maior ou igual a 7.</p>
+  <p>Crie um algoritmo que leia a nota de um aluno. Se a nota for maior ou igual a 7, mostre a mensagem: "Aluno aprovado".</p>
 
   <button onclick="mostrarResposta('resposta4')">Ver resposta</button>
 
   <div id="resposta4" class="resposta">
     <pre>
-algoritmo "aprovado_ou_reprovado"
+algoritmo "verifica_aprovacao"
 
 var
    nota: real
@@ -180,8 +173,6 @@ inicio
 
    se nota &gt;= 7 entao
       escreval("Aluno aprovado.")
-   senao
-      escreval("Aluno reprovado.")
    fimse
 
 fimalgoritmo
@@ -192,13 +183,13 @@ fimalgoritmo
 <!-- Questão 5 -->
 <div class="questao">
   <h2>Questão 5</h2>
-  <p>Crie um algoritmo que leia uma senha numérica e informe se a senha digitada está correta. Considere que a senha correta é 1234.</p>
+  <p>Crie um algoritmo que leia uma senha numérica. Se a senha for igual a 1234, mostre a mensagem: "Acesso permitido".</p>
 
   <button onclick="mostrarResposta('resposta5')">Ver resposta</button>
 
   <div id="resposta5" class="resposta">
     <pre>
-algoritmo "senha_correta"
+algoritmo "verifica_senha"
 
 var
    senha: inteiro
@@ -209,8 +200,6 @@ inicio
 
    se senha = 1234 entao
       escreval("Acesso permitido.")
-   senao
-      escreval("Senha incorreta.")
    fimse
 
 fimalgoritmo
@@ -221,32 +210,24 @@ fimalgoritmo
 <!-- Questão 6 -->
 <div class="questao">
   <h2>Questão 6</h2>
-  <p>Crie um algoritmo que leia dois números inteiros e informe qual deles é o maior. Caso sejam iguais, informe que os valores são iguais.</p>
+  <p>Crie um algoritmo que leia o valor de uma compra. Se o valor for maior ou igual a R$ 100,00, aplique um desconto de 10% e mostre o valor final com desconto.</p>
 
   <button onclick="mostrarResposta('resposta6')">Ver resposta</button>
 
   <div id="resposta6" class="resposta">
     <pre>
-algoritmo "maior_entre_dois"
+algoritmo "desconto_compra"
 
 var
-   n1, n2: inteiro
+   valorCompra, valorFinal: real
 
 inicio
-   escreva("Digite o primeiro número: ")
-   leia(n1)
+   escreva("Digite o valor da compra: R$ ")
+   leia(valorCompra)
 
-   escreva("Digite o segundo número: ")
-   leia(n2)
-
-   se n1 &gt; n2 entao
-      escreval("O maior número é: ", n1)
-   senao
-      se n2 &gt; n1 entao
-         escreval("O maior número é: ", n2)
-      senao
-         escreval("Os dois números são iguais.")
-      fimse
+   se valorCompra &gt;= 100 entao
+      valorFinal &lt;- valorCompra - (valorCompra * 0.10)
+      escreval("Valor final com desconto: R$ ", valorFinal)
    fimse
 
 fimalgoritmo
@@ -257,13 +238,13 @@ fimalgoritmo
 <!-- Questão 7 -->
 <div class="questao">
   <h2>Questão 7</h2>
-  <p>Crie um algoritmo que leia duas notas de um aluno, calcule a média e informe se ele foi aprovado ou reprovado. Considere aprovado quem tiver média maior ou igual a 7.</p>
+  <p>Crie um algoritmo que leia duas notas de um aluno e calcule a média. Se a média for maior ou igual a 7, mostre a média e a mensagem: "Aluno aprovado".</p>
 
   <button onclick="mostrarResposta('resposta7')">Ver resposta</button>
 
   <div id="resposta7" class="resposta">
     <pre>
-algoritmo "media_duas_notas"
+algoritmo "media_aprovacao"
 
 var
    nota1, nota2, media: real
@@ -277,12 +258,9 @@ inicio
 
    media &lt;- (nota1 + nota2) / 2
 
-   escreval("Média: ", media)
-
    se media &gt;= 7 entao
+      escreval("Média: ", media)
       escreval("Aluno aprovado.")
-   senao
-      escreval("Aluno reprovado.")
    fimse
 
 fimalgoritmo
@@ -293,44 +271,13 @@ fimalgoritmo
 <!-- Questão 8 -->
 <div class="questao">
   <h2>Questão 8</h2>
-  <p>Crie um algoritmo que leia o valor de uma compra. Se o valor for maior ou igual a R$ 100,00, aplique um desconto de 10%. Caso contrário, não aplique desconto. Ao final, mostre o valor final da compra.</p>
+  <p>Crie um algoritmo que leia a temperatura de uma pessoa. Se a temperatura for maior ou igual a 37.8, mostre a mensagem: "Pessoa com febre".</p>
 
   <button onclick="mostrarResposta('resposta8')">Ver resposta</button>
 
   <div id="resposta8" class="resposta">
     <pre>
-algoritmo "desconto_compra"
-
-var
-   valorCompra, valorFinal: real
-
-inicio
-   escreva("Digite o valor da compra: R$ ")
-   leia(valorCompra)
-
-   se valorCompra &gt;= 100 entao
-      valorFinal &lt;- valorCompra - (valorCompra * 0.10)
-   senao
-      valorFinal &lt;- valorCompra
-   fimse
-
-   escreval("Valor final da compra: R$ ", valorFinal)
-
-fimalgoritmo
-    </pre>
-  </div>
-</div>
-
-<!-- Questão 9 -->
-<div class="questao">
-  <h2>Questão 9</h2>
-  <p>Crie um algoritmo que leia a temperatura de uma pessoa. Se a temperatura for maior ou igual a 37.8, informe que a pessoa está com febre. Caso contrário, informe que a temperatura está normal.</p>
-
-  <button onclick="mostrarResposta('resposta9')">Ver resposta</button>
-
-  <div id="resposta9" class="resposta">
-    <pre>
-algoritmo "verificacao_temperatura"
+algoritmo "verifica_febre"
 
 var
    temperatura: real
@@ -340,9 +287,7 @@ inicio
    leia(temperatura)
 
    se temperatura &gt;= 37.8 entao
-      escreval("A pessoa está com febre.")
-   senao
-      escreval("Temperatura normal.")
+      escreval("Pessoa com febre.")
    fimse
 
 fimalgoritmo
@@ -350,16 +295,16 @@ fimalgoritmo
   </div>
 </div>
 
-<!-- Questão 10 -->
+<!-- Questão 9 -->
 <div class="questao">
-  <h2>Questão 10</h2>
-  <p>Crie um algoritmo que leia o salário de um funcionário. Se o salário for menor ou igual a R$ 1500,00, aplique um bônus de R$ 200,00. Caso contrário, aplique um bônus de R$ 100,00. Ao final, mostre o novo salário.</p>
+  <h2>Questão 9</h2>
+  <p>Crie um algoritmo que leia o salário de um funcionário. Se o salário for menor ou igual a R$ 1500,00, aplique um bônus de R$ 200,00 e mostre o novo salário.</p>
 
-  <button onclick="mostrarResposta('resposta10')">Ver resposta</button>
+  <button onclick="mostrarResposta('resposta9')">Ver resposta</button>
 
-  <div id="resposta10" class="resposta">
+  <div id="resposta9" class="resposta">
     <pre>
-algoritmo "salario_com_bonus"
+algoritmo "bonus_salario"
 
 var
    salario, novoSalario: real
@@ -370,11 +315,35 @@ inicio
 
    se salario &lt;= 1500 entao
       novoSalario &lt;- salario + 200
-   senao
-      novoSalario &lt;- salario + 100
+      escreval("Novo salário: R$ ", novoSalario)
    fimse
 
-   escreval("Novo salário: R$ ", novoSalario)
+fimalgoritmo
+    </pre>
+  </div>
+</div>
+
+<!-- Questão 10 -->
+<div class="questao">
+  <h2>Questão 10</h2>
+  <p>Crie um algoritmo que leia a quantidade de produtos comprados. Se a quantidade for maior que 10, mostre a mensagem: "Compra em grande quantidade".</p>
+
+  <button onclick="mostrarResposta('resposta10')">Ver resposta</button>
+
+  <div id="resposta10" class="resposta">
+    <pre>
+algoritmo "quantidade_produtos"
+
+var
+   quantidade: inteiro
+
+inicio
+   escreva("Digite a quantidade de produtos comprados: ")
+   leia(quantidade)
+
+   se quantidade &gt; 10 entao
+      escreval("Compra em grande quantidade.")
+   fimse
 
 fimalgoritmo
     </pre>
