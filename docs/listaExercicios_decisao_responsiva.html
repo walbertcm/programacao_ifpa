@@ -2,22 +2,52 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lista de Exercícios - Decisão com Se e Senão</title>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+  }
+
   body {
     font-family: Arial, sans-serif;
-    margin: 30px;
+    margin: 0;
+    padding: clamp(12px, 3vw, 30px);
     background-color: #f5f5f5;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  main {
+    width: min(100%, 1000px);
+    margin: 0 auto;
   }
 
   h1 {
     color: #1f2937;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-top: 0;
+  }
+
+  p {
+    font-size: clamp(1rem, 2.5vw, 1.08rem);
   }
 
   .subtitulo {
     color: #444;
-    font-size: 17px;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     margin-bottom: 25px;
   }
 
@@ -31,18 +61,21 @@
 
   .questao {
     background: white;
-    padding: 20px;
+    padding: clamp(15px, 3vw, 24px);
     margin-bottom: 20px;
     border-radius: 8px;
     border-left: 5px solid #2c7be5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
   pre {
     background: #eeeeee;
     padding: 15px;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: clamp(0.85rem, 2.3vw, 1rem);
     overflow-x: auto;
+    max-width: 100%;
+    white-space: pre;
   }
 
   button {
@@ -52,6 +85,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 1rem;
   }
 
   button:hover {
@@ -61,14 +95,37 @@
   .resposta {
     display: none;
     margin-top: 15px;
-    padding: 15px;
+    padding: clamp(12px, 3vw, 15px);
     background: #e8f5e9;
     border-left: 4px solid #2e7d32;
+    overflow-x: auto;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 12px;
+    }
+
+    .questao {
+      border-left-width: 4px;
+      margin-bottom: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+    }
+
+    pre {
+      padding: 12px;
+    }
   }
 </style>
 </head>
 
 <body>
+
+<main>
 
 <h1>Lista de Exercícios - Algoritmos com Decisão</h1>
 <p class="subtitulo">Conteúdo: estrutura condicional <strong>se...senao</strong> em Portugol, compatível com VisualG.</p>
@@ -243,6 +300,7 @@ inicio
       escreval("O maior número é: ", n1)
    senao
       escreval("O maior número é: ", n2)
+      fimse
    fimse
 
 fimalgoritmo
@@ -376,6 +434,8 @@ fimalgoritmo
     </pre>
   </div>
 </div>
+
+</main>
 
 <script>
 function mostrarResposta(id) {
