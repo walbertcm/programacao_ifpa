@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Lista de exercícios de algoritmos sobre estruturas condicionais se, senao se e senao em Portugol." name="description"/>
+<title>Lista de Exercícios - Decisão com Se, Senão se e Senão</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  h1 { color: #1f2937; margin-top: 0; }
+
+  .subtitulo {
+    color: #444;
+    font-size: 17px;
+    margin-bottom: 25px;
+  }
+
+  header, main, footer, .container {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  main { padding: 0; }
+
+  .nivel {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 30px 0 15px 0;
+    border: none;
+  }
+
+  .nivel div:first-child { display: none; }
+  .nivel strong { display: inline; }
+  .nivel p { display: inline; margin: 0; }
+  .nivel p::before { content: ' — '; }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    border-left: 5px solid #2c7be5;
+    box-shadow: none;
+  }
+
+  .questao-cabecalho { display: block; margin-bottom: 0; }
+  .numero { display: none; }
+
+  h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #1f2937;
+  }
+
+  h3 { margin: 0 0 10px 0; font-size: 1em; }
+  .enunciado p:first-child { margin-top: 0; }
+  .enunciado p:last-child { margin-bottom: 0; }
+  .enunciado ul, .enunciado ol { padding-left: 25px; }
+
+  pre {
+    margin: 0;
+    background: #eeeeee;
+    color: #111;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-x: auto;
+  }
+
+  button, .btn-resposta {
+    display: inline-block;
+    min-height: auto;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  button:hover, button:focus-visible,
+  .btn-resposta:hover, .btn-resposta:focus-visible {
+    background: #1a5fc4;
+  }
+
+  .btn-resposta:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+  }
+
+  .icone { display: none; }
+
+  .resposta {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border: none;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0;
+  }
+
+  .resposta[hidden] { display: none; }
+
+  footer {
+    padding: 0 0 20px;
+    color: #444;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    body { margin: 16px; }
+    h1 { font-size: 1.65rem; }
+    .subtitulo { font-size: 16px; }
+    .questao { padding: 16px; }
+    h2 { font-size: 1.25rem; }
+    pre { padding: 12px; font-size: 14px; }
+    button, .btn-resposta { width: 100%; }
+  }
+
+  @media print {
+    body { margin: 0; background: #fff; }
+    .questao { break-inside: avoid; }
+    .btn-resposta { display: none; }
+    .resposta[hidden] { display: block; }
+    pre { white-space: pre-wrap; overflow: visible; }
+  }
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>Lista de Exercícios — Algoritmos com Decisão</h1>
+<p class="subtitulo">Conteúdo: estruturas condicionais <strong>se... senão se... senão</strong> em Portugol, compatível com VisualG.</p>
+</div>
+</header>
+<main>
+<section aria-label="Orientações da lista" class="nivel">
+<div aria-hidden="true">ℹ️</div>
+
+</section>
+<article class="questao" id="questao-1">
+<div class="questao-cabecalho">
+<span class="numero">Questão 1</span>
+<h2>Questão 1 — Classificação de nota</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que leia a nota de um aluno e apresente uma das classificações:</p>
+<ul>
+<li><strong>Aprovado</strong>, quando a nota for maior ou igual a 7;</li>
+<li><strong>Recuperação</strong>, quando a nota estiver entre 4 e 6,9;</li>
+<li><strong>Reprovado</strong>, quando a nota for menor que 4.</li>
+</ul>
+</div>
+<button aria-controls="resposta1" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta1', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+      </button>
+<section class="resposta" hidden="" id="resposta1">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo "classificacao_nota"
+
+var
+   nota: real
+
+inicio
+   escreva("Digite a nota do aluno: ")
+   leia(nota)
+
+   se nota &gt;= 7 entao
+      escreval("Situação: Aprovado.")
+   senao
+      se nota &gt;= 4 entao
+         escreval("Situação: Recuperação.")
+      senao
+         escreval("Situação: Reprovado.")
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article><article class="questao" id="questao-2">
+<div class="questao-cabecalho">
+<span class="numero">Questão 2</span>
+<h2>Questão 2 — Temperatura corporal</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que leia a temperatura corporal de uma pessoa e informe:</p>
+<ul>
+<li><strong>Temperatura baixa</strong>, se for menor que 36;</li>
+<li><strong>Temperatura normal</strong>, se estiver entre 36 e 37,7;</li>
+<li><strong>Febre</strong>, se for maior ou igual a 37,8.</li>
+</ul>
+</div>
+<button aria-controls="resposta2" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta2', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+      </button>
+<section class="resposta" hidden="" id="resposta2">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo "temperatura_corporal"
+
+var
+   temperatura: real
+
+inicio
+   escreva("Digite a temperatura corporal: ")
+   leia(temperatura)
+
+   se temperatura &lt; 36 entao
+      escreval("Temperatura baixa.")
+   senao
+      se temperatura &lt; 37.8 entao
+         escreval("Temperatura normal.")
+      senao
+         escreval("Febre.")
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article><article class="questao" id="questao-3">
+<div class="questao-cabecalho">
+<span class="numero">Questão 3</span>
+<h2>Questão 3 — Categoria por idade</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que leia a idade de uma pessoa e a classifique em uma das categorias:</p>
+<ul>
+<li><strong>Criança</strong>, se tiver até 12 anos;</li>
+<li><strong>Adolescente</strong>, se tiver entre 13 e 17 anos;</li>
+<li><strong>Adulto</strong>, se tiver entre 18 e 59 anos;</li>
+<li><strong>Idoso</strong>, se tiver 60 anos ou mais.</li>
+</ul>
+</div>
+<button aria-controls="resposta3" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta3', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+      </button>
+<section class="resposta" hidden="" id="resposta3">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo "categoria_por_idade"
+
+var
+   idade: inteiro
+
+inicio
+   escreva("Digite a idade: ")
+   leia(idade)
+
+   se idade &lt;= 12 entao
+      escreval("Categoria: Criança.")
+   senao
+      se idade &lt;= 17 entao
+         escreval("Categoria: Adolescente.")
+      senao
+         se idade &lt;= 59 entao
+            escreval("Categoria: Adulto.")
+         senao
+            escreval("Categoria: Idoso.")
+         fimse
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article><article class="questao" id="questao-4">
+<div class="questao-cabecalho">
+<span class="numero">Questão 4</span>
+<h2>Questão 4 — Cálculo de área de figuras geométricas</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que leia um código correspondente a uma figura geométrica:</p>
+<ol>
+<li>Quadrado</li>
+<li>Retângulo</li>
+<li>Triângulo</li>
+</ol>
+<p>De acordo com a opção escolhida, solicite os valores necessários e calcule a área:</p>
+<ul>
+<li>Quadrado: <code>área = lado × lado</code>;</li>
+<li>Retângulo: <code>área = base × altura</code>;</li>
+<li>Triângulo: <code>área = (base × altura) / 2</code>.</li>
+</ul>
+<p>Ao final, informe a área calculada. Caso seja informado outro código, exiba a mensagem <strong>“Figura inválida.”</strong></p>
+</div>
+<button aria-controls="resposta4" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta4', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+      </button>
+<section class="resposta" hidden="" id="resposta4">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo "area_figuras"
+
+var
+   codigo: inteiro
+   lado, base, altura, area: real
+
+inicio
+   escreval("1 - Quadrado")
+   escreval("2 - Retângulo")
+   escreval("3 - Triângulo")
+   escreva("Digite o código da figura: ")
+   leia(codigo)
+
+   se codigo = 1 entao
+      escreva("Digite o lado do quadrado: ")
+      leia(lado)
+
+      area &lt;- lado * lado
+      escreval("Área do quadrado: ", area)
+   senao
+      se codigo = 2 entao
+         escreva("Digite a base do retângulo: ")
+         leia(base)
+         escreva("Digite a altura do retângulo: ")
+         leia(altura)
+
+         area &lt;- base * altura
+         escreval("Área do retângulo: ", area)
+      senao
+         se codigo = 3 entao
+            escreva("Digite a base do triângulo: ")
+            leia(base)
+            escreva("Digite a altura do triângulo: ")
+            leia(altura)
+
+            area &lt;- (base * altura) / 2
+            escreval("Área do triângulo: ", area)
+         senao
+            escreval("Figura inválida.")
+         fimse
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article><article class="questao" id="questao-5">
+<div class="questao-cabecalho">
+<span class="numero">Questão 5</span>
+<h2>Questão 5 — Cálculo de salário por categoria</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que leia o salário-base de um funcionário e sua categoria profissional:</p>
+<ol>
+<li><strong>Estagiário:</strong> recebe o salário-base, sem acréscimo;</li>
+<li><strong>Assistente:</strong> recebe acréscimo de 10%;</li>
+<li><strong>Analista:</strong> recebe acréscimo de 20%;</li>
+<li><strong>Gerente:</strong> recebe acréscimo de 30%.</li>
+</ol>
+<p>O algoritmo deve calcular e informar o salário final conforme a categoria. Caso a categoria seja inválida, apresente uma mensagem de erro.</p>
+</div>
+<button aria-controls="resposta5" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta5', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+      </button>
+<section class="resposta" hidden="" id="resposta5">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo "salario_por_categoria"
+
+var
+   categoria: inteiro
+   salarioBase, salarioFinal: real
+
+inicio
+   escreva("Digite o salário-base: R$ ")
+   leia(salarioBase)
+
+   escreval("1 - Estagiário")
+   escreval("2 - Assistente")
+   escreval("3 - Analista")
+   escreval("4 - Gerente")
+   escreva("Digite a categoria: ")
+   leia(categoria)
+
+   se categoria = 1 entao
+      salarioFinal &lt;- salarioBase
+      escreval("Salário final: R$ ", salarioFinal)
+   senao
+      se categoria = 2 entao
+         salarioFinal &lt;- salarioBase * 1.10
+         escreval("Salário final: R$ ", salarioFinal)
+      senao
+         se categoria = 3 entao
+            salarioFinal &lt;- salarioBase * 1.20
+            escreval("Salário final: R$ ", salarioFinal)
+         senao
+            se categoria = 4 entao
+               salarioFinal &lt;- salarioBase * 1.30
+               escreval("Salário final: R$ ", salarioFinal)
+            senao
+               escreval("Categoria inválida.")
+            fimse
+         fimse
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+</main>
+
+<script>
+function alternarResposta(id, botao) {
+  const resposta = document.getElementById(id);
+  const aberta = resposta.hasAttribute('hidden');
+  if (aberta) {
+    resposta.removeAttribute('hidden');
+    botao.setAttribute('aria-expanded', 'true');
+    botao.textContent = 'Ocultar resposta';
+  } else {
+    resposta.setAttribute('hidden', '');
+    botao.setAttribute('aria-expanded', 'false');
+    botao.textContent = 'Ver resposta';
+  }
+}
+</script>
+</body>
+</html>
