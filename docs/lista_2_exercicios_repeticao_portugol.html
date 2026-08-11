@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Lista de exercícios de algoritmos sobre estruturas de repetição em Portugol." name="description"/>
+<title>Lista 2 — Algoritmos com Repetição</title>
+<style>
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  h1 { color: #1f2937; margin-top: 0; }
+
+  .subtitulo {
+    color: #444;
+    font-size: 17px;
+    margin-bottom: 25px;
+  }
+
+  header, main, footer, .container {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  main { padding: 0; }
+
+  .nivel {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 30px 0 15px 0;
+    border: none;
+  }
+
+  .nivel div:first-child { display: none; }
+  .nivel strong { display: inline; }
+  .nivel p { display: inline; margin: 0; }
+  .nivel p::before { content: ' — '; }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    border-left: 5px solid #2c7be5;
+    box-shadow: none;
+  }
+
+  .questao-cabecalho { display: block; margin-bottom: 0; }
+  .numero { display: none; }
+
+  h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #1f2937;
+  }
+
+  h3 { margin: 0 0 10px 0; font-size: 1em; }
+  .enunciado p:first-child { margin-top: 0; }
+  .enunciado p:last-child { margin-bottom: 0; }
+  .enunciado ul, .enunciado ol { padding-left: 25px; }
+
+  pre {
+    margin: 0;
+    background: #eeeeee;
+    color: #111;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-x: auto;
+  }
+
+  button, .btn-resposta {
+    display: inline-block;
+    min-height: auto;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  button:hover, button:focus-visible,
+  .btn-resposta:hover, .btn-resposta:focus-visible {
+    background: #1a5fc4;
+  }
+
+  .btn-resposta:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+  }
+
+  .icone { display: none; }
+
+  .resposta {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border: none;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0;
+  }
+
+  .resposta[hidden] { display: none; }
+
+  footer {
+    padding: 0 0 20px;
+    color: #444;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    body { margin: 16px; }
+    h1 { font-size: 1.65rem; }
+    .subtitulo { font-size: 16px; }
+    .questao { padding: 16px; }
+    h2 { font-size: 1.25rem; }
+    pre { padding: 12px; font-size: 14px; }
+    button, .btn-resposta { width: 100%; }
+  }
+
+  @media print {
+    body { margin: 0; background: #fff; }
+    .questao { break-inside: avoid; }
+    .btn-resposta { display: none; }
+    .resposta[hidden] { display: block; }
+    pre { white-space: pre-wrap; overflow: visible; }
+  }
+
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>Lista 2 — Algoritmos com Repetição</h1>
+<p class="subtitulo">Conteúdo: estruturas de repetição <strong>para, enquanto e repita... até</strong> em Portugol, compatível com VisualG.</p>
+</div>
+</header>
+<main>
+
+
+<article class="questao" id="questao-1">
+<div class="questao-cabecalho">
+<span class="numero">Questão 1</span>
+<h2>Questão 1 — Maior número entre dez valores</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>10 números</strong> e informe qual foi o maior valor digitado.</p>
+</div>
+<button aria-controls="resposta1" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta1', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta1">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;maior_dez_numeros&quot;
+
+var
+   i, numero, maior: inteiro
+
+inicio
+   para i de 1 ate 10 faca
+      escreva(&quot;Digite o &quot;, i, &quot;º número: &quot;)
+      leia(numero)
+
+      se i = 1 entao
+         maior &lt;- numero
+      senao
+         se numero &gt; maior entao
+            maior &lt;- numero
+         fimse
+      fimse
+   fimpara
+
+   escreval(&quot;Maior número: &quot;, maior)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-2">
+<div class="questao-cabecalho">
+<span class="numero">Questão 2</span>
+<h2>Questão 2 — Menor número entre dez valores</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>10 números</strong> e informe qual foi o menor valor digitado.</p>
+</div>
+<button aria-controls="resposta2" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta2', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta2">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;menor_dez_numeros&quot;
+
+var
+   i, numero, menor: inteiro
+
+inicio
+   para i de 1 ate 10 faca
+      escreva(&quot;Digite o &quot;, i, &quot;º número: &quot;)
+      leia(numero)
+
+      se i = 1 entao
+         menor &lt;- numero
+      senao
+         se numero &lt; menor entao
+            menor &lt;- numero
+         fimse
+      fimse
+   fimpara
+
+   escreval(&quot;Menor número: &quot;, menor)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-3">
+<div class="questao-cabecalho">
+<span class="numero">Questão 3</span>
+<h2>Questão 3 — Positivos, negativos e zeros</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>15 números inteiros</strong> e informe quantos são positivos, quantos são negativos e quantos são iguais a zero.</p>
+</div>
+<button aria-controls="resposta3" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta3', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta3">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;classificar_numeros&quot;
+
+var
+   i, numero, positivos, negativos, zeros: inteiro
+
+inicio
+   positivos &lt;- 0
+   negativos &lt;- 0
+   zeros &lt;- 0
+
+   para i de 1 ate 15 faca
+      escreva(&quot;Digite um número: &quot;)
+      leia(numero)
+
+      se numero &gt; 0 entao
+         positivos &lt;- positivos + 1
+      senao
+         se numero &lt; 0 entao
+            negativos &lt;- negativos + 1
+         senao
+            zeros &lt;- zeros + 1
+         fimse
+      fimse
+   fimpara
+
+   escreval(&quot;Positivos: &quot;, positivos)
+   escreval(&quot;Negativos: &quot;, negativos)
+   escreval(&quot;Zeros: &quot;, zeros)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-4">
+<div class="questao-cabecalho">
+<span class="numero">Questão 4</span>
+<h2>Questão 4 — Fatorial de um número</h2>
+</div>
+<div class="enunciado">
+<p>Leia um número inteiro não negativo e calcule seu <strong>fatorial</strong>. Exemplo: <code>5! = 5 × 4 × 3 × 2 × 1 = 120</code>.</p>
+</div>
+<button aria-controls="resposta4" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta4', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta4">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;fatorial&quot;
+
+var
+   numero, i, fatorial: inteiro
+
+inicio
+   escreva(&quot;Digite um número inteiro não negativo: &quot;)
+   leia(numero)
+
+   fatorial &lt;- 1
+
+   para i de 1 ate numero faca
+      fatorial &lt;- fatorial * i
+   fimpara
+
+   escreval(numero, &quot;! = &quot;, fatorial)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-5">
+<div class="questao-cabecalho">
+<span class="numero">Questão 5</span>
+<h2>Questão 5 — Quantidade de divisores</h2>
+</div>
+<div class="enunciado">
+<p>Leia um número inteiro positivo e informe <strong>quantos divisores</strong> ele possui.</p>
+</div>
+<button aria-controls="resposta5" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta5', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta5">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;quantidade_divisores&quot;
+
+var
+   numero, i, divisores: inteiro
+
+inicio
+   escreva(&quot;Digite um número inteiro positivo: &quot;)
+   leia(numero)
+
+   divisores &lt;- 0
+
+   para i de 1 ate numero faca
+      se numero mod i = 0 entao
+         divisores &lt;- divisores + 1
+      fimse
+   fimpara
+
+   escreval(&quot;Quantidade de divisores: &quot;, divisores)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-6">
+<div class="questao-cabecalho">
+<span class="numero">Questão 6</span>
+<h2>Questão 6 — Verificar número primo</h2>
+</div>
+<div class="enunciado">
+<p>Leia um número inteiro maior que 1 e informe se ele é <strong>primo</strong>. Um número primo possui exatamente dois divisores: 1 e ele mesmo.</p>
+</div>
+<button aria-controls="resposta6" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta6', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta6">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;numero_primo&quot;
+
+var
+   numero, i, divisores: inteiro
+
+inicio
+   escreva(&quot;Digite um número maior que 1: &quot;)
+   leia(numero)
+
+   divisores &lt;- 0
+
+   para i de 1 ate numero faca
+      se numero mod i = 0 entao
+         divisores &lt;- divisores + 1
+      fimse
+   fimpara
+
+   se divisores = 2 entao
+      escreval(&quot;O número é primo.&quot;)
+   senao
+      escreval(&quot;O número não é primo.&quot;)
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-7">
+<div class="questao-cabecalho">
+<span class="numero">Questão 7</span>
+<h2>Questão 7 — Média da turma</h2>
+</div>
+<div class="enunciado">
+<p>Leia a quantidade de alunos de uma turma. Em seguida, leia a nota de cada aluno e calcule a <strong>média geral da turma</strong>.</p>
+</div>
+<button aria-controls="resposta7" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta7', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta7">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;media_turma&quot;
+
+var
+   quantidade, i: inteiro
+   nota, soma, media: real
+
+inicio
+   escreva(&quot;Digite a quantidade de alunos: &quot;)
+   leia(quantidade)
+
+   soma &lt;- 0
+
+   para i de 1 ate quantidade faca
+      escreva(&quot;Digite a nota do aluno &quot;, i, &quot;: &quot;)
+      leia(nota)
+      soma &lt;- soma + nota
+   fimpara
+
+   media &lt;- soma / quantidade
+   escreval(&quot;Média da turma = &quot;, media)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-8">
+<div class="questao-cabecalho">
+<span class="numero">Questão 8</span>
+<h2>Questão 8 — Aprovados e reprovados</h2>
+</div>
+<div class="enunciado">
+<p>Leia a quantidade de alunos de uma turma e a nota de cada aluno. Considere <strong>aprovado</strong> quem tiver nota maior ou igual a 7. Ao final, informe a quantidade de aprovados e reprovados.</p>
+</div>
+<button aria-controls="resposta8" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta8', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta8">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;aprovados_reprovados&quot;
+
+var
+   quantidade, i, aprovados, reprovados: inteiro
+   nota: real
+
+inicio
+   escreva(&quot;Digite a quantidade de alunos: &quot;)
+   leia(quantidade)
+
+   aprovados &lt;- 0
+   reprovados &lt;- 0
+
+   para i de 1 ate quantidade faca
+      escreva(&quot;Digite a nota do aluno &quot;, i, &quot;: &quot;)
+      leia(nota)
+
+      se nota &gt;= 7 entao
+         aprovados &lt;- aprovados + 1
+      senao
+         reprovados &lt;- reprovados + 1
+      fimse
+   fimpara
+
+   escreval(&quot;Aprovados: &quot;, aprovados)
+   escreval(&quot;Reprovados: &quot;, reprovados)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-9">
+<div class="questao-cabecalho">
+<span class="numero">Questão 9</span>
+<h2>Questão 9 — Menu de operações</h2>
+</div>
+<div class="enunciado">
+<p>Crie um menu que seja exibido repetidamente até o usuário escolher a opção <strong>4 - Sair</strong>:</p>
+<ol>
+<li>Somar dois números;</li>
+<li>Subtrair dois números;</li>
+<li>Multiplicar dois números;</li>
+<li>Sair.</li>
+</ol>
+<p>Para as opções 1, 2 e 3, solicite dois valores e apresente o resultado.</p>
+</div>
+<button aria-controls="resposta9" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta9', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta9">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;menu_operacoes&quot;
+
+var
+   opcao: inteiro
+   a, b: real
+
+inicio
+   repita
+      escreval(&quot;1 - Somar&quot;)
+      escreval(&quot;2 - Subtrair&quot;)
+      escreval(&quot;3 - Multiplicar&quot;)
+      escreval(&quot;4 - Sair&quot;)
+      escreva(&quot;Escolha uma opção: &quot;)
+      leia(opcao)
+
+      se opcao &gt;= 1 e opcao &lt;= 3 entao
+         escreva(&quot;Digite o primeiro valor: &quot;)
+         leia(a)
+         escreva(&quot;Digite o segundo valor: &quot;)
+         leia(b)
+      fimse
+
+      se opcao = 1 entao
+         escreval(&quot;Resultado: &quot;, a + b)
+      senao
+         se opcao = 2 entao
+            escreval(&quot;Resultado: &quot;, a - b)
+         senao
+            se opcao = 3 entao
+               escreval(&quot;Resultado: &quot;, a * b)
+            senao
+               se opcao &lt;&gt; 4 entao
+                  escreval(&quot;Opção inválida.&quot;)
+               fimse
+            fimse
+         fimse
+      fimse
+
+   ate opcao = 4
+
+   escreval(&quot;Programa encerrado.&quot;)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-10">
+<div class="questao-cabecalho">
+<span class="numero">Questão 10</span>
+<h2>Questão 10 — Sequência de Fibonacci</h2>
+</div>
+<div class="enunciado">
+<p>Leia a quantidade de termos e apresente a <strong>sequência de Fibonacci</strong>, iniciando por 0 e 1. Exemplo para 8 termos: <code>0 1 1 2 3 5 8 13</code>.</p>
+</div>
+<button aria-controls="resposta10" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta10', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta10">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;fibonacci&quot;
+
+var
+   quantidade, i, a, b, proximo: inteiro
+
+inicio
+   escreva(&quot;Digite a quantidade de termos: &quot;)
+   leia(quantidade)
+
+   a &lt;- 0
+   b &lt;- 1
+
+   se quantidade &gt;= 1 entao
+      escreva(a, &quot; &quot;)
+   fimse
+
+   se quantidade &gt;= 2 entao
+      escreva(b, &quot; &quot;)
+   fimse
+
+   para i de 3 ate quantidade faca
+      proximo &lt;- a + b
+      escreva(proximo, &quot; &quot;)
+      a &lt;- b
+      b &lt;- proximo
+   fimpara
+
+   escreval(&quot;&quot;)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+</main>
+<footer>
+<p>Material de apoio — Algoritmos e Estruturas de Repetição em Portugol.</p>
+</footer>
+<script>
+
+function alternarResposta(id, botao) {
+  const resposta = document.getElementById(id);
+  const aberta = resposta.hasAttribute('hidden');
+  if (aberta) {
+    resposta.removeAttribute('hidden');
+    botao.setAttribute('aria-expanded', 'true');
+    botao.textContent = 'Ocultar resposta';
+  } else {
+    resposta.setAttribute('hidden', '');
+    botao.setAttribute('aria-expanded', 'false');
+    botao.textContent = 'Ver resposta';
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Lista de exercícios de algoritmos sobre estruturas de repetição em Portugol." name="description"/>
+<title>Lista 1 — Algoritmos com Repetição</title>
+<style>
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  h1 { color: #1f2937; margin-top: 0; }
+
+  .subtitulo {
+    color: #444;
+    font-size: 17px;
+    margin-bottom: 25px;
+  }
+
+  header, main, footer, .container {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  main { padding: 0; }
+
+  .nivel {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 30px 0 15px 0;
+    border: none;
+  }
+
+  .nivel div:first-child { display: none; }
+  .nivel strong { display: inline; }
+  .nivel p { display: inline; margin: 0; }
+  .nivel p::before { content: ' — '; }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    border-left: 5px solid #2c7be5;
+    box-shadow: none;
+  }
+
+  .questao-cabecalho { display: block; margin-bottom: 0; }
+  .numero { display: none; }
+
+  h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #1f2937;
+  }
+
+  h3 { margin: 0 0 10px 0; font-size: 1em; }
+  .enunciado p:first-child { margin-top: 0; }
+  .enunciado p:last-child { margin-bottom: 0; }
+  .enunciado ul, .enunciado ol { padding-left: 25px; }
+
+  pre {
+    margin: 0;
+    background: #eeeeee;
+    color: #111;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-x: auto;
+  }
+
+  button, .btn-resposta {
+    display: inline-block;
+    min-height: auto;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  button:hover, button:focus-visible,
+  .btn-resposta:hover, .btn-resposta:focus-visible {
+    background: #1a5fc4;
+  }
+
+  .btn-resposta:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+  }
+
+  .icone { display: none; }
+
+  .resposta {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border: none;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0;
+  }
+
+  .resposta[hidden] { display: none; }
+
+  footer {
+    padding: 0 0 20px;
+    color: #444;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    body { margin: 16px; }
+    h1 { font-size: 1.65rem; }
+    .subtitulo { font-size: 16px; }
+    .questao { padding: 16px; }
+    h2 { font-size: 1.25rem; }
+    pre { padding: 12px; font-size: 14px; }
+    button, .btn-resposta { width: 100%; }
+  }
+
+  @media print {
+    body { margin: 0; background: #fff; }
+    .questao { break-inside: avoid; }
+    .btn-resposta { display: none; }
+    .resposta[hidden] { display: block; }
+    pre { white-space: pre-wrap; overflow: visible; }
+  }
+
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>Lista 1 — Algoritmos com Repetição</h1>
+<p class="subtitulo">Conteúdo: estruturas de repetição <strong>para, enquanto e repita... até</strong> em Portugol, compatível com VisualG.</p>
+</div>
+</header>
+<main>
+
+
+<article class="questao" id="questao-1">
+<div class="questao-cabecalho">
+<span class="numero">Questão 1</span>
+<h2>Questão 1 — Contagem de 1 até 10</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que apresente na tela os números de <strong>1 até 10</strong>, em ordem crescente, utilizando uma estrutura de repetição.</p>
+</div>
+<button aria-controls="resposta1" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta1', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta1">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;contagem_1_10&quot;
+
+var
+   i: inteiro
+
+inicio
+   para i de 1 ate 10 faca
+      escreval(i)
+   fimpara
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-2">
+<div class="questao-cabecalho">
+<span class="numero">Questão 2</span>
+<h2>Questão 2 — Contagem regressiva</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que apresente os números de <strong>10 até 1</strong>, em ordem decrescente.</p>
+</div>
+<button aria-controls="resposta2" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta2', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta2">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;contagem_regressiva&quot;
+
+var
+   i: inteiro
+
+inicio
+   para i de 10 ate 1 passo -1 faca
+      escreval(i)
+   fimpara
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-3">
+<div class="questao-cabecalho">
+<span class="numero">Questão 3</span>
+<h2>Questão 3 — Números pares de 2 até 20</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que apresente apenas os números <strong>pares</strong> de 2 até 20.</p>
+</div>
+<button aria-controls="resposta3" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta3', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta3">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;pares_2_20&quot;
+
+var
+   i: inteiro
+
+inicio
+   para i de 2 ate 20 passo 2 faca
+      escreval(i)
+   fimpara
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-4">
+<div class="questao-cabecalho">
+<span class="numero">Questão 4</span>
+<h2>Questão 4 — Tabuada de um número</h2>
+</div>
+<div class="enunciado">
+<p>Leia um número inteiro e apresente sua tabuada de <strong>1 até 10</strong>.</p>
+</div>
+<button aria-controls="resposta4" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta4', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta4">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;tabuada&quot;
+
+var
+   numero, i: inteiro
+
+inicio
+   escreva(&quot;Digite um número: &quot;)
+   leia(numero)
+
+   para i de 1 ate 10 faca
+      escreval(numero, &quot; x &quot;, i, &quot; = &quot;, numero * i)
+   fimpara
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-5">
+<div class="questao-cabecalho">
+<span class="numero">Questão 5</span>
+<h2>Questão 5 — Soma de 1 até 100</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que calcule e apresente a soma de todos os números inteiros de <strong>1 até 100</strong>.</p>
+</div>
+<button aria-controls="resposta5" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta5', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta5">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;soma_1_100&quot;
+
+var
+   i, soma: inteiro
+
+inicio
+   soma &lt;- 0
+
+   para i de 1 ate 100 faca
+      soma &lt;- soma + i
+   fimpara
+
+   escreval(&quot;Soma = &quot;, soma)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-6">
+<div class="questao-cabecalho">
+<span class="numero">Questão 6</span>
+<h2>Questão 6 — Leitura e soma de cinco números</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>cinco números</strong> informados pelo usuário e apresente a soma total.</p>
+</div>
+<button aria-controls="resposta6" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta6', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta6">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;soma_cinco_numeros&quot;
+
+var
+   i: inteiro
+   numero, soma: real
+
+inicio
+   soma &lt;- 0
+
+   para i de 1 ate 5 faca
+      escreva(&quot;Digite o &quot;, i, &quot;º número: &quot;)
+      leia(numero)
+      soma &lt;- soma + numero
+   fimpara
+
+   escreval(&quot;Soma total = &quot;, soma)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-7">
+<div class="questao-cabecalho">
+<span class="numero">Questão 7</span>
+<h2>Questão 7 — Média de cinco notas</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>cinco notas</strong>, calcule a média aritmética e apresente o resultado.</p>
+</div>
+<button aria-controls="resposta7" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta7', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta7">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;media_cinco_notas&quot;
+
+var
+   i: inteiro
+   nota, soma, media: real
+
+inicio
+   soma &lt;- 0
+
+   para i de 1 ate 5 faca
+      escreva(&quot;Digite a nota &quot;, i, &quot;: &quot;)
+      leia(nota)
+      soma &lt;- soma + nota
+   fimpara
+
+   media &lt;- soma / 5
+   escreval(&quot;Média = &quot;, media)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-8">
+<div class="questao-cabecalho">
+<span class="numero">Questão 8</span>
+<h2>Questão 8 — Contar números positivos</h2>
+</div>
+<div class="enunciado">
+<p>Leia <strong>10 números inteiros</strong> e informe quantos deles são positivos.</p>
+</div>
+<button aria-controls="resposta8" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta8', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta8">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;contar_positivos&quot;
+
+var
+   i, numero, positivos: inteiro
+
+inicio
+   positivos &lt;- 0
+
+   para i de 1 ate 10 faca
+      escreva(&quot;Digite um número: &quot;)
+      leia(numero)
+
+      se numero &gt; 0 entao
+         positivos &lt;- positivos + 1
+      fimse
+   fimpara
+
+   escreval(&quot;Quantidade de positivos: &quot;, positivos)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-9">
+<div class="questao-cabecalho">
+<span class="numero">Questão 9</span>
+<h2>Questão 9 — Senha até acertar</h2>
+</div>
+<div class="enunciado">
+<p>Crie um algoritmo que solicite uma senha ao usuário. Enquanto a senha digitada for diferente de <strong>1234</strong>, o programa deve solicitar novamente. Ao acertar, exiba <strong>“Acesso permitido.”</strong></p>
+</div>
+<button aria-controls="resposta9" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta9', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta9">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;validar_senha&quot;
+
+var
+   senha: inteiro
+
+inicio
+   escreva(&quot;Digite a senha: &quot;)
+   leia(senha)
+
+   enquanto senha &lt;&gt; 1234 faca
+      escreval(&quot;Senha incorreta.&quot;)
+      escreva(&quot;Digite a senha novamente: &quot;)
+      leia(senha)
+   fimenquanto
+
+   escreval(&quot;Acesso permitido.&quot;)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+<article class="questao" id="questao-10">
+<div class="questao-cabecalho">
+<span class="numero">Questão 10</span>
+<h2>Questão 10 — Somar até digitar zero</h2>
+</div>
+<div class="enunciado">
+<p>Leia números inteiros e acumule seus valores. A repetição deve terminar quando o usuário digitar <strong>0</strong>. Ao final, apresente a soma dos valores informados.</p>
+</div>
+<button aria-controls="resposta10" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta10', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta10">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;somar_ate_zero&quot;
+
+var
+   numero, soma: inteiro
+
+inicio
+   soma &lt;- 0
+
+   repita
+      escreva(&quot;Digite um número (0 para encerrar): &quot;)
+      leia(numero)
+      soma &lt;- soma + numero
+   ate numero = 0
+
+   escreval(&quot;Soma total = &quot;, soma)
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+</main>
+<footer>
+<p>Material de apoio — Algoritmos e Estruturas de Repetição em Portugol.</p>
+</footer>
+<script>
+
+function alternarResposta(id, botao) {
+  const resposta = document.getElementById(id);
+  const aberta = resposta.hasAttribute('hidden');
+  if (aberta) {
+    resposta.removeAttribute('hidden');
+    botao.setAttribute('aria-expanded', 'true');
+    botao.textContent = 'Ocultar resposta';
+  } else {
+    resposta.setAttribute('hidden', '');
+    botao.setAttribute('aria-expanded', 'false');
+    botao.textContent = 'Ver resposta';
+  }
+}
+
+</script>
+</body>
+</html>
