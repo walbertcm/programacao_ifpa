@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Lista de exercícios de algoritmos com estruturas condicionais em Portugol." name="description"/>
+<title>Lista — Algoritmos Para Prova</title>
+<style>
+
+  * { box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+    color: #1f2937;
+    line-height: 1.5;
+  }
+
+  h1 { color: #1f2937; margin-top: 0; }
+
+  .subtitulo {
+    color: #444;
+    font-size: 17px;
+    margin-bottom: 25px;
+  }
+
+  header, main, footer, .container {
+    display: block;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  main { padding: 0; }
+
+  .nivel {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 30px 0 15px 0;
+    border: none;
+  }
+
+  .nivel div:first-child { display: none; }
+  .nivel strong { display: inline; }
+  .nivel p { display: inline; margin: 0; }
+  .nivel p::before { content: ' — '; }
+
+  .questao {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: none;
+    border-left: 5px solid #2c7be5;
+    box-shadow: none;
+  }
+
+  .questao-cabecalho { display: block; margin-bottom: 0; }
+  .numero { display: none; }
+
+  h2 {
+    margin: 0 0 12px 0;
+    font-size: 1.5em;
+    line-height: 1.25;
+    color: #1f2937;
+  }
+
+  h3 { margin: 0 0 10px 0; font-size: 1em; }
+  .enunciado p:first-child { margin-top: 0; }
+  .enunciado p:last-child { margin-bottom: 0; }
+  .enunciado ul, .enunciado ol { padding-left: 25px; }
+
+  pre {
+    margin: 0;
+    background: #eeeeee;
+    color: #111;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-x: auto;
+  }
+
+  button, .btn-resposta {
+    display: inline-block;
+    min-height: auto;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #2c7be5;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    font-weight: normal;
+    cursor: pointer;
+  }
+
+  button:hover, button:focus-visible,
+  .btn-resposta:hover, .btn-resposta:focus-visible {
+    background: #1a5fc4;
+  }
+
+  .btn-resposta:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+  }
+
+  .icone { display: none; }
+
+  .resposta {
+    display: block;
+    margin-top: 15px;
+    padding: 15px;
+    background: #e8f5e9;
+    border: none;
+    border-left: 4px solid #2e7d32;
+    border-radius: 0;
+  }
+
+  .resposta[hidden] { display: none; }
+
+  footer {
+    padding: 0 0 20px;
+    color: #444;
+    font-size: 14px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    body { margin: 16px; }
+    h1 { font-size: 1.65rem; }
+    .subtitulo { font-size: 16px; }
+    .questao { padding: 16px; }
+    h2 { font-size: 1.25rem; }
+    pre { padding: 12px; font-size: 14px; }
+    button, .btn-resposta { width: 100%; }
+  }
+
+  @media print {
+    body { margin: 0; background: #fff; }
+    .questao { break-inside: avoid; }
+    .btn-resposta { display: none; }
+    .resposta[hidden] { display: block; }
+    pre { white-space: pre-wrap; overflow: visible; }
+  }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0 5px;
+    background: #fff;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 9px 10px;
+    text-align: left;
+  }
+
+  th {
+    background: #e5e7eb;
+    color: #1f2937;
+  }
+
+  td:first-child, th:first-child {
+    text-align: center;
+  }
+
+</style>
+</head>
+<body>
+<header>
+<div>
+<h1>Lista — Algoritmos para Prova</h1>
+<p class="subtitulo">Conteúdo: operadores, estruturas condicionais e menu de opções em <strong>Portugol</strong>, compatível com VisualG.</p>
+</div>
+</header>
+
+<main>
+
+<article class="questao" id="questao-8">
+<div class="questao-cabecalho">
+<span class="numero">Questão 1</span>
+<h2>Questão 1 — Menu de opções</h2>
+</div>
+<div class="enunciado">
+<p>Faça um programa que mostre o menu de opções a seguir, receba a opção do usuário e os dados necessários para executar cada operação.</p>
+<p><strong>Menu de opções:</strong></p>
+<ol>
+<li>Somar dois números.</li>
+<li>Raiz quadrada de um número.</li>
+</ol>
+<p>Digite a opção desejada.</p>
+</div>
+<button aria-controls="resposta8" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta8', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta8">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;menu_opcoes&quot;
+
+var
+   num1, num2, soma, raiz: real
+   op: inteiro
+
+inicio
+   escreval(&quot;MENU&quot;)
+   escreval(&quot;1 - Somar dois números&quot;)
+   escreval(&quot;2 - Raiz quadrada de um número&quot;)
+   escreva(&quot;Digite a opção desejada: &quot;)
+   leia(op)
+
+   se op = 1 entao
+      escreva(&quot;Digite o primeiro número: &quot;)
+      leia(num1)
+
+      escreva(&quot;Digite o segundo número: &quot;)
+      leia(num2)
+
+      soma &lt;- num1 + num2
+
+      escreval(&quot;A soma de &quot;, num1, &quot; e &quot;, num2, &quot; é &quot;, soma)
+   senao
+      se op = 2 entao
+         escreva(&quot;Digite um número: &quot;)
+         leia(num1)
+
+         se num1 &gt;= 0 entao
+            raiz &lt;- raizq(num1)
+            escreval(&quot;A raiz quadrada de &quot;, num1, &quot; é &quot;, raiz)
+         senao
+            escreval(&quot;Não existe raiz quadrada real para número negativo.&quot;)
+         fimse
+      senao
+         escreval(&quot;Opção inválida!&quot;)
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+
+<article class="questao" id="questao-11">
+<div class="questao-cabecalho">
+<span class="numero">Questão 2</span>
+<h2>Questão 2 — Potências e raízes</h2>
+</div>
+<div class="enunciado">
+<p>Faça um programa que receba um número positivo e maior que zero, calcule e mostre:</p>
+<ol type="a">
+<li>o número digitado ao quadrado;</li>
+<li>o número digitado ao cubo;</li>
+<li>a raiz quadrada do número digitado;</li>
+<li>a raiz cúbica do número digitado.</li>
+</ol>
+</div>
+<button aria-controls="resposta11" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta11', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta11">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;potencias_e_raizes&quot;
+
+var
+   numero, quadrado, cubo, raiz_quadrada, raiz_cubica: real
+
+inicio
+   escreva(&quot;Digite um número positivo e maior que zero: &quot;)
+   leia(numero)
+
+   se numero &gt; 0 entao
+      quadrado &lt;- numero ^ 2
+      cubo &lt;- numero ^ 3
+      raiz_quadrada &lt;- raizq(numero)
+      raiz_cubica &lt;- numero ^ (1.0 / 3.0)
+
+      escreval(&quot;Número ao quadrado: &quot;, quadrado)
+      escreval(&quot;Número ao cubo: &quot;, cubo)
+      escreval(&quot;Raiz quadrada: &quot;, raiz_quadrada)
+      escreval(&quot;Raiz cúbica: &quot;, raiz_cubica)
+   senao
+      escreval(&quot;O número deve ser positivo e maior que zero.&quot;)
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+
+<article class="questao" id="questao-12">
+<div class="questao-cabecalho">
+<span class="numero">Questão 12</span>
+<h2>Questão 3 — Cargo e aumento salarial</h2>
+</div>
+<div class="enunciado">
+<p>Faça um programa que receba o código correspondente ao cargo de um funcionário e seu salário atual e mostre o cargo, o valor do aumento e seu novo salário. Os cargos estão na tabela a seguir.</p>
+
+<table aria-label="Tabela de cargos e percentuais de aumento">
+<thead>
+<tr>
+<th>Código</th>
+<th>Cargo</th>
+<th>Percentual de aumento</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Escriturário</td><td>50%</td></tr>
+<tr><td>2</td><td>Secretário</td><td>35%</td></tr>
+<tr><td>3</td><td>Caixa</td><td>20%</td></tr>
+<tr><td>4</td><td>Gerente</td><td>10%</td></tr>
+<tr><td>5</td><td>Diretor</td><td>Não tem aumento</td></tr>
+</tbody>
+</table>
+</div>
+<button aria-controls="resposta12" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta12', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta12">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;cargo_e_aumento&quot;
+
+var
+   cargo: inteiro
+   salario, aumento, novo_salario: real
+
+inicio
+   escreva(&quot;Digite o código do cargo do funcionário (1, 2, 3, 4 ou 5): &quot;)
+   leia(cargo)
+
+   escreva(&quot;Digite o salário atual: &quot;)
+   leia(salario)
+
+   escolha cargo
+      caso 1
+         escreval(&quot;Cargo: Escriturário&quot;)
+         aumento &lt;- salario * 50 / 100
+
+      caso 2
+         escreval(&quot;Cargo: Secretário&quot;)
+         aumento &lt;- salario * 35 / 100
+
+      caso 3
+         escreval(&quot;Cargo: Caixa&quot;)
+         aumento &lt;- salario * 20 / 100
+
+      caso 4
+         escreval(&quot;Cargo: Gerente&quot;)
+         aumento &lt;- salario * 10 / 100
+
+      caso 5
+         escreval(&quot;Cargo: Diretor&quot;)
+         aumento &lt;- 0
+
+      outrocaso
+         escreval(&quot;Cargo inexistente!&quot;)
+         aumento &lt;- -1
+   fimescolha
+
+   se aumento &gt;= 0 entao
+      novo_salario &lt;- salario + aumento
+      escreval(&quot;Valor do aumento: R$ &quot;, aumento:8:2)
+      escreval(&quot;Novo salário: R$ &quot;, novo_salario:8:2)
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+
+<article class="questao" id="questao-20">
+<div class="questao-cabecalho">
+<span class="numero">Questão 20</span>
+<h2>Questão 4 — Categoria de um nadador</h2>
+</div>
+<div class="enunciado">
+<p>Faça um programa que receba a idade de um nadador e mostre sua categoria, usando as regras a seguir. Para idade inferior a 5, deverá mostrar mensagem.</p>
+
+<table aria-label="Categorias de nadadores por idade">
+<thead>
+<tr>
+<th>Categoria</th>
+<th>Idade</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Infantil</td><td>5 a 7</td></tr>
+<tr><td>Juvenil</td><td>8 a 10</td></tr>
+<tr><td>Adolescente</td><td>11 a 15</td></tr>
+<tr><td>Adulto</td><td>16 a 30</td></tr>
+<tr><td>Sênior</td><td>Acima de 30</td></tr>
+</tbody>
+</table>
+</div>
+<button aria-controls="resposta20" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta20', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+<section class="resposta" hidden="" id="resposta20">
+<h3>Resposta em Portugol</h3>
+<pre><code>algoritmo &quot;categoria_nadador&quot;
+
+var
+   idade: inteiro
+
+inicio
+   escreva(&quot;Digite a idade do nadador: &quot;)
+   leia(idade)
+
+   se idade &lt; 5 entao
+      escreval(&quot;Não existe categoria para esta idade.&quot;)
+   senao
+      se idade &lt;= 7 entao
+         escreval(&quot;Categoria: Infantil&quot;)
+      senao
+         se idade &lt;= 10 entao
+            escreval(&quot;Categoria: Juvenil&quot;)
+         senao
+            se idade &lt;= 15 entao
+               escreval(&quot;Categoria: Adolescente&quot;)
+            senao
+               se idade &lt;= 30 entao
+                  escreval(&quot;Categoria: Adulto&quot;)
+               senao
+                  escreval(&quot;Categoria: Sênior&quot;)
+               fimse
+            fimse
+         fimse
+      fimse
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+
+
+<article class="questao" id="questao-24">
+<div class="questao-cabecalho">
+<span class="numero">Questão 5</span>
+<h2>Questão 5 — Jogo de adivinhação</h2>
+</div>
+
+<div class="enunciado">
+<p>Faça um programa que implemente um <strong>jogo de adivinhação</strong>. O programa deverá definir um número secreto igual a <strong>7</strong> e permitir que o jogador tente descobrir esse número.</p>
+
+<p>O jogador terá <strong>5 tentativas</strong>. A cada tentativa:</p>
+
+<ul>
+<li>Leia um número informado pelo jogador.</li>
+<li>Se o número for igual ao número secreto, mostre a mensagem <strong>"Parabéns! Você acertou!"</strong>.</li>
+<li>Se o número digitado for menor que o número secreto, mostre a mensagem <strong>"O número secreto é maior."</strong>.</li>
+<li>Se o número digitado for maior que o número secreto, mostre a mensagem <strong>"O número secreto é menor."</strong>.</li>
+</ul>
+
+<p>Caso o jogador não acerte após as 5 tentativas, mostre a mensagem <strong>"Fim de jogo! O número secreto era 7."</strong>.</p>
+</div>
+
+<button aria-controls="resposta24" aria-expanded="false" class="btn-resposta" onclick="alternarResposta('resposta24', this)" type="button">
+<span aria-hidden="true" class="icone">⌄</span> Ver resposta
+</button>
+
+<section class="resposta" hidden="" id="resposta24">
+<h3>Resposta em Portugol</h3>
+
+<pre><code>algoritmo &quot;jogo_adivinhacao&quot;
+
+var
+   numero, secreto, tentativa: inteiro
+   acertou: logico
+
+inicio
+   secreto &lt;- 7
+   acertou &lt;- falso
+
+   escreval(&quot;=== JOGO DE ADIVINHAÇÃO ===&quot;)
+   escreval(&quot;Tente descobrir o número secreto.&quot;)
+   escreval(&quot;Você possui 5 tentativas.&quot;)
+
+   para tentativa de 1 ate 5 faca
+
+      se acertou = falso entao
+
+         escreva(&quot;Tentativa &quot;, tentativa, &quot;: &quot;)
+         leia(numero)
+
+         se numero = secreto entao
+            escreval(&quot;Parabéns! Você acertou!&quot;)
+            acertou &lt;- verdadeiro
+         senao
+
+            se numero &lt; secreto entao
+               escreval(&quot;O número secreto é maior.&quot;)
+            senao
+               escreval(&quot;O número secreto é menor.&quot;)
+            fimse
+
+         fimse
+
+      fimse
+
+   fimpara
+
+   se acertou = falso entao
+      escreval(&quot;Fim de jogo!&quot;)
+      escreval(&quot;O número secreto era &quot;, secreto, &quot;.&quot;)
+   fimse
+
+fimalgoritmo</code></pre>
+</section>
+</article>
+
+
+</main>
+
+<footer>
+<p>Material de apoio — Algoritmos e Estruturas Condicionais em Portugol.</p>
+</footer>
+
+<script>
+
+function alternarResposta(id, botao) {
+  const resposta = document.getElementById(id);
+  const aberta = resposta.hasAttribute('hidden');
+  if (aberta) {
+    resposta.removeAttribute('hidden');
+    botao.setAttribute('aria-expanded', 'true');
+    botao.textContent = 'Ocultar resposta';
+  } else {
+    resposta.setAttribute('hidden', '');
+    botao.setAttribute('aria-expanded', 'false');
+    botao.textContent = 'Ver resposta';
+  }
+}
+
+</script>
+</body>
+</html>
