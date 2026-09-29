@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Avaliação Online</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 80px auto;
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background: #1769aa;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #12558a;
+        }
+
+        #mensagem {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .erro {
+            color: #b00020;
+        }
+
+        .info {
+            color: #555;
+        }
+
+        .orientacoes-prova {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.orientacoes-prova h2 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.orientacoes-prova ul {
+    padding-left: 20px;
+}
+
+.orientacoes-prova li {
+    margin-bottom: 7px;
+}
+
+.aviso-prova {
+    margin-top: 15px;
+    padding: 10px;
+    background: #fff3cd;
+    border-radius: 5px;
+}
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Avaliação Online</h1>
+
+    <p class="subtitulo" id="nomeAvaliacao">
+    Carregando avaliação...
+</p>
+
+<div class="orientacoes-prova">
+    <h2>Orientações da Avaliação</h2>
+
+    <p>
+        Esta avaliação tem como objetivo verificar os conhecimentos desenvolvidos
+        na disciplina de <strong>Algoritmos e Programação</strong>.
+    </p>
+
+    <ul>
+        <li>A avaliação é <strong>individual</strong>.</li>
+        <li>A prova possui <strong>10 questões</strong> selecionadas automaticamente.</li>
+        <li>O tempo máximo para realização é de <strong>120 minutos</strong>.</li>
+        <li>Cada questão possui <strong>apenas uma alternativa correta</strong>.</li>
+        <li>As respostas são <strong>salvas automaticamente</strong>.</li>
+        <li>Você poderá alterar suas respostas enquanto a prova estiver em andamento.</li>
+        <li>
+            Se a página for atualizada ou fechada acidentalmente, ao retornar com
+            a mesma matrícula, a prova continuará com as mesmas questões,
+            respostas registradas e tempo restante.
+        </li>
+        <li>
+            Ao concluir, clique em <strong>Finalizar e enviar prova</strong>.
+        </li>
+        <li>
+            Após a finalização, <strong>não será permitida uma nova tentativa</strong>
+            com a mesma matrícula.
+        </li>
+        <li>
+            A nota e o gabarito não serão apresentados imediatamente após o envio.
+        </li>
+        <li>
+            Ao término do tempo, a prova será enviada automaticamente.
+        </li>
+    </ul>
+
+    <p class="aviso-prova">
+        <strong>Atenção:</strong> leia atentamente cada questão e revise suas
+        respostas antes de finalizar.
+    </p>
+</div>
+
+<form id="formAluno">
+
+    <form id="formAluno">
+
+        <label for="nome">Nome completo</label>
+        <input
+            type="text"
+            id="nome"
+            required
+            autocomplete="name"
+        >
+
+        <label for="matricula">Matrícula</label>
+        <input
+            type="text"
+            id="matricula"
+            required
+        >
+
+        <label for="turma">Turma</label>
+        <input
+            type="text"
+            id="turma"
+            required
+        >
+
+        <button type="submit">
+            Iniciar prova
+        </button>
+
+    </form>
+
+    <div id="mensagem"></div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbx9B-8lb3pzZrOOASFBIw0CfFjzRnPDG0PHrGU0EI3RvpyCcju78tFI5x7jOEAPXBQ/exec";
+
+
+let avaliacao = null;
+
+
+/* Carrega informações da avaliação */
+
+async function carregarAvaliacao() {
+
+    const mensagem =
+        document.getElementById("mensagem");
+
+    try {
+
+        const resposta =
+            await fetch(API_URL + "?acao=avaliacao");
+
+        const dados =
+            await resposta.json();
+
+
+        if (!dados.sucesso) {
+
+            mensagem.innerHTML =
+                '<span class="erro">' +
+                dados.mensagem +
+                '</span>';
+
+            return;
+        }
+
+
+        avaliacao = dados.avaliacao;
+
+
+        document.getElementById(
+            "nomeAvaliacao"
+        ).textContent =
+            avaliacao.nome +
+            " — " +
+            avaliacao.tempo +
+            " minutos";
+
+
+    } catch (erro) {
+
+        mensagem.innerHTML =
+            '<span class="erro">' +
+            'Não foi possível carregar a avaliação.' +
+            '</span>';
+
+        console.error(erro);
+    }
+}
+
+
+/* Formulário */
+
+document.getElementById(
+    "formAluno"
+).addEventListener(
+    "submit",
+    function(evento) {
+
+        evento.preventDefault();
+
+
+        if (!avaliacao) {
+
+            document.getElementById(
+                "mensagem"
+            ).innerHTML =
+                '<span class="erro">' +
+                'A avaliação ainda não foi carregada.' +
+                '</span>';
+
+            return;
+        }
+
+
+        const aluno = {
+
+            nome:
+                document
+                .getElementById("nome")
+                .value
+                .trim(),
+
+            matricula:
+                document
+                .getElementById("matricula")
+                .value
+                .trim(),
+
+            turma:
+                document
+                .getElementById("turma")
+                .value
+                .trim(),
+
+            avaliacao:
+                avaliacao.id
+        };
+
+
+        /*
+         * Temporariamente armazenamos
+         * os dados no navegador.
+         */
+
+        localStorage.setItem(
+            "aluno",
+            JSON.stringify(aluno)
+        );
+
+
+        document.getElementById(
+            "mensagem"
+        ).innerHTML =
+            '<span class="info">' +
+            'Dados registrados. Preparando prova...' +
+            '</span>';
+
+
+        console.log(aluno);
+
+
+          window.location.href = "prova.html";
+   
+    }
+);
+
+
+/* Inicialização */
+
+carregarAvaliacao();
+
+</script>
+
+</body>
+</html>

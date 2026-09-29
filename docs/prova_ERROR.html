@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prova Online</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.topo {
+    position: sticky;
+    top: 0;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.topo h2 {
+    margin: 0;
+}
+
+#cronometro {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.aluno {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.questao {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+}
+
+.questao h3 {
+    margin-top: 0;
+}
+
+.codigo {
+    background: #1e1e1e;
+    color: #f5f5f5;
+    padding: 18px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.alternativa {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.alternativa:hover {
+    background: #f0f4f8;
+}
+
+.alternativa input {
+    margin-right: 10px;
+}
+
+#btnEnviar {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0 50px;
+    border: none;
+    border-radius: 7px;
+    background: #1769aa;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#btnEnviar:hover {
+    background: #12558a;
+}
+
+#mensagem {
+    text-align: center;
+    padding: 30px;
+    font-size: 18px;
+}
+
+.aviso {
+    background: #fff4d6;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+    <h2 id="titulo">Avaliação</h2>
+    <div id="cronometro">--:--:--</div>
+</header>
+
+<main class="container">
+
+    <div class="aluno" id="dadosAluno"></div>
+
+    <div class="aviso">
+        Leia atentamente todas as questões. A prova possui apenas uma tentativa.
+    </div>
+
+    <div id="questoes">
+        <div id="mensagem">
+            Preparando sua prova...
+        </div>
+    </div>
+
+    <button id="btnEnviar" style="display:none;">
+        Enviar prova
+    </button>
+
+</main>
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbx9B-8lb3pzZrOOASFBIw0CfFjzRnPDG0PHrGU0EI3RvpyCcju78tFI5x7jOEAPXBQ/exec";
+
+let prova = null;
+let tempoRestante = 0;
+let intervaloCronometro = null;
+
+
+/* ---------------------------------
+   Recupera identificação do aluno
+---------------------------------- */
+
+const alunoSalvo = localStorage.getItem("aluno");
+
+if (!alunoSalvo) {
+    window.location.href = "index.html";
+}
+
+const aluno = JSON.parse(alunoSalvo);
+
+document.getElementById("dadosAluno").innerHTML =
+    "<strong>Aluno:</strong> " + escapar(aluno.nome) +
+    " &nbsp; | &nbsp; " +
+    "<strong>Matrícula:</strong> " + escapar(aluno.matricula) +
+    " &nbsp; | &nbsp; " +
+    "<strong>Turma:</strong> " + escapar(aluno.turma);
+
+
+/* ---------------------------------
+   Carrega a prova
+---------------------------------- */
+
+async function carregarProva() {
+
+    try {
+
+       const idProvaSalvo =
+    localStorage.getItem("idProva") || "";
+
+const parametros = new URLSearchParams({
+    acao: "iniciarProva",
+    nome: aluno.nome,
+    matricula: aluno.matricula,
+    turma: aluno.turma,
+    avaliacao: aluno.avaliacao,
+    idProva: idProvaSalvo,
+    t: Date.now()
+});
+
+const resposta =
+    await fetch(
+        API_URL + "?" + parametros.toString()
+    );
+
+        const dados =
+            await resposta.json();
+
+        if (!dados.sucesso) {
+            throw new Error(dados.mensagem);
+        }
+
+        prova = dados;
+
+        localStorage.setItem(
+    "idProva",
+    dados.idProva
+);
+
+        document.getElementById("titulo").textContent =
+            prova.avaliacao.nome;
+
+        exibirQuestoes(prova.questoes);
+
+        /* Recupera alternativas já marcadas */
+recuperarRespostasLocais();
+
+       const inicio =
+    Number(prova.inicio);
+
+const agora =
+    Date.now();
+
+const tempoTotal =
+    prova.avaliacao.tempo * 60;
+
+const tempoDecorrido =
+    Math.floor(
+        (agora - inicio) / 1000
+    );
+
+tempoRestante =
+    tempoTotal - tempoDecorrido;
+
+
+if (tempoRestante <= 0) {
+
+    tempoRestante = 0;
+
+    atualizarCronometro();
+
+    enviarProva(true);
+
+    return;
+}
+
+
+iniciarCronometro();
+
+        document.getElementById("btnEnviar").style.display =
+            "block";
+
+    } catch (erro) {
+
+        document.getElementById("questoes").innerHTML =
+            '<div id="mensagem">Erro ao carregar a prova: ' +
+            escapar(erro.message) +
+            '</div>';
+    }
+}
+
+
+/* ---------------------------------
+   Exibe questões
+---------------------------------- */
+
+function exibirQuestoes(questoes) {
+
+    const container =
+        document.getElementById("questoes");
+
+    container.innerHTML = "";
+
+    questoes.forEach((questao, indice) => {
+
+        const bloco =
+            document.createElement("div");
+
+        bloco.className = "questao";
+
+        let html =
+            "<h3>Questão " + (indice + 1) + "</h3>" +
+            "<p>" + escapar(questao.enunciado) + "</p>";
+
+
+        /* Exibe código, caso exista */
+
+        if (
+            questao.codigo &&
+            questao.codigo.trim() !== ""
+        ) {
+
+            html +=
+                '<pre class="codigo">' +
+                escapar(questao.codigo) +
+                '</pre>';
+        }
+
+
+        /* Exibe alternativas */
+
+        for (const letra of ["A", "B", "C", "D"]) {
+
+            const texto =
+                questao.alternativas[letra];
+
+            if (
+                !texto ||
+                texto.trim() === ""
+            ) {
+                continue;
+            }
+
+            html +=
+                '<label class="alternativa">' +
+
+                '<input type="radio" ' +
+                'name="questao_' +
+                questao.id +
+                '" ' +
+                'value="' +
+                letra +
+                '">' +
+
+                '<strong>' +
+                letra +
+                ')</strong> ' +
+
+                escapar(texto) +
+
+                '</label>';
+        }
+
+
+        bloco.innerHTML = html;
+
+        container.appendChild(bloco);
+
+    });
+
+
+    /* ---------------------------------
+       Salvamento automático
+       das respostas
+    ---------------------------------- */
+
+    document
+        .querySelectorAll(
+            '.questao input[type="radio"]'
+        )
+        .forEach(campo => {
+
+            campo.addEventListener(
+                "change",
+                salvarRespostasLocalmente
+            );
+
+        });
+
+}
+
+
+/* ---------------------------------
+   Cronômetro
+---------------------------------- */
+
+function iniciarCronometro() {
+
+    atualizarCronometro();
+
+    intervaloCronometro =
+        setInterval(() => {
+
+            tempoRestante--;
+
+            atualizarCronometro();
+
+            if (tempoRestante <= 0) {
+
+                clearInterval(intervaloCronometro);
+
+                enviarProva(true);
+            }
+
+        }, 1000);
+}
+
+
+function atualizarCronometro() {
+
+    const horas =
+        Math.floor(tempoRestante / 3600);
+
+    const minutos =
+        Math.floor(
+            (tempoRestante % 3600) / 60
+        );
+
+    const segundos =
+        tempoRestante % 60;
+
+    document.getElementById("cronometro").textContent =
+        String(horas).padStart(2, "0") + ":" +
+        String(minutos).padStart(2, "0") + ":" +
+        String(segundos).padStart(2, "0");
+}
+
+
+/* ---------------------------------
+   Captura respostas
+---------------------------------- */
+
+function obterRespostas() {
+
+    const respostas = [];
+
+    prova.questoes.forEach(questao => {
+
+        const selecionada =
+            document.querySelector(
+                'input[name="questao_' +
+                questao.id +
+                '"]:checked'
+            );
+
+        respostas.push({
+            questao: questao.id,
+            resposta:
+                selecionada
+                ? selecionada.value
+                : ""
+        });
+    });
+
+    return respostas;
+}
+
+
+/* ---------------------------------
+   Botão enviar
+---------------------------------- */
+
+document.getElementById("btnEnviar")
+.addEventListener("click", function() {
+
+    const respostas =
+        obterRespostas();
+
+    const respondidas =
+        respostas.filter(
+            r => r.resposta !== ""
+        ).length;
+
+    if (respondidas < prova.questoes.length) {
+
+        const continuar =
+            confirm(
+                "Você respondeu " +
+                respondidas +
+                " de " +
+                prova.questoes.length +
+                " questões.\n\nDeseja enviar mesmo assim?"
+            );
+
+        if (!continuar) {
+            return;
+        }
+    }
+
+    const confirmar =
+        confirm(
+            "Deseja finalizar e enviar a prova?"
+        );
+
+    if (confirmar) {
+        enviarProva(false);
+    }
+});
+
+
+/* ---------------------------------
+   Envio - temporário
+---------------------------------- */
+
+async function enviarProva(automatico) {
+
+    clearInterval(intervaloCronometro);
+
+    const botao =
+        document.getElementById("btnEnviar");
+
+    if (botao) {
+        botao.disabled = true;
+        botao.textContent = "Enviando...";
+    }
+
+    const respostas =
+        obterRespostas();
+
+    try {
+
+        const parametros =
+            new URLSearchParams({
+                acao: "finalizarProva",
+                idProva: prova.idProva,
+                respostas: JSON.stringify(respostas)
+            });
+
+        const resposta =
+            await fetch(
+                API_URL + "?" +
+                parametros.toString()
+            );
+
+        const dados =
+            await resposta.json();
+
+
+        if (!dados.sucesso) {
+            throw new Error(dados.mensagem);
+        }
+
+
+        /*
+         * Remove os dados locais
+         * depois do envio.
+         */
+
+        localStorage.removeItem("idProva");
+        localStorage.removeItem("aluno");
+
+
+        document.body.innerHTML = `
+            <div style="
+                max-width:600px;
+                margin:120px auto;
+                font-family:Arial;
+                text-align:center;
+                background:white;
+                padding:50px;
+                border-radius:10px;
+            ">
+
+                <h1>Prova enviada</h1>
+
+                <p>
+                    Suas respostas foram registradas
+                    com sucesso.
+                </p>
+
+                <p>
+                    Você pode fechar esta página.
+                </p>
+
+            </div>
+        `;
+
+
+    } catch (erro) {
+
+        alert(
+            "Não foi possível enviar a prova.\n\n" +
+            erro.message +
+            "\n\nTente novamente."
+        );
+
+        if (botao) {
+            botao.disabled = false;
+            botao.textContent = "Enviar prova";
+        }
+
+        /*
+         * Se houve erro de comunicação,
+         * retomamos o cronômetro.
+         */
+
+        if (tempoRestante > 0) {
+            iniciarCronometro();
+        }
+    }
+}
+
+
+/* ---------------------------------
+   Segurança básica de exibição
+---------------------------------- */
+
+function escapar(texto) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        texto == null ? "" : String(texto);
+
+    return div.innerHTML;
+}
+
+
+/* ---------------------------------
+   Inicialização
+---------------------------------- */
+
+/* ---------------------------------
+   Salvamento automático
+---------------------------------- */
+
+function chaveRespostas() {
+    return "respostas_" + prova.idProva;
+}
+
+
+function salvarRespostasLocalmente() {
+
+    if (!prova || !prova.idProva) {
+        return;
+    }
+
+    const respostas = obterRespostas();
+
+    localStorage.setItem(
+        chaveRespostas(),
+        JSON.stringify(respostas)
+    );
+}
+
+
+function recuperarRespostasLocais() {
+
+    if (!prova || !prova.idProva) {
+        return;
+    }
+
+    const dados =
+        localStorage.getItem(
+            chaveRespostas()
+        );
+
+    if (!dados) {
+        return;
+    }
+
+    try {
+
+        const respostas =
+            JSON.parse(dados);
+
+        respostas.forEach(item => {
+
+            if (!item.resposta) {
+                return;
+            }
+
+            const campo =
+                document.querySelector(
+                    'input[name="questao_' +
+                    item.questao +
+                    '"][value="' +
+                    item.resposta +
+                    '"]'
+                );
+
+            if (campo) {
+                campo.checked = true;
+            }
+
+        });
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao recuperar respostas:",
+            erro
+        );
+    }
+}
+
+
+carregarProva();
+
+</script>
+
+</body>
+</html>
