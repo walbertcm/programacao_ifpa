@@ -31,18 +31,27 @@ void setup() {
 }
 
 void loop() {
+
   if (radio.available()) {
+
     memset(dados, 0xAA, sizeof(dados));
 
     radio.read(dados, sizeof(dados));
 
-    Serial.print("DADOS: ");
+    Serial.println("------ RECEBIDO ------");
 
     for (int i = 0; i < 8; i++) {
+
+      Serial.print("Posicao ");
+      Serial.print(i);
+
+      Serial.print(" = ");
       Serial.print(dados[i]);
-      Serial.print(" ");
+
+      Serial.print(" | HEX = ");
+      Serial.println(dados[i], HEX);
     }
 
-    Serial.println();
+    Serial.println("----------------------");
   }
 }
