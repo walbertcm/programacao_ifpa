@@ -4,38 +4,52 @@
 
 RF24 radio(7, 8);
 
-const byte endereco[6] = "00001";
-
-char mensagem[32];
+const byte endereco[6] = "BRC01";
+char mensagem[33];
 
 void setup() {
   Serial.begin(9600);
 
   if (!radio.begin()) {
-    Serial.println("Modulo nao detectado!");
+    Serial.println("ERRO: NRF24 nao detectado!");
     while (1);
   }
 
-  radio.openReadingPipe(0, endereco);
-  radio.setPALevel(RF24_PA_LOW);
+  radio.setChannel(100);
   radio.setDataRate(RF24_250KBPS);
-  radio.setChannel(76);
+  radio.setPALevel(RF24_PA_LOW);
+  radio.setPayloadSize(32);
+  radio.setAutoAck(true);
+
+  radio.openReadingPipe(1, endereco);
   radio.startListening();
 
   Serial.println("RECEPTOR PRONTO");
-  Serial.println("Aguardando mensagens...");
+  Serial.println("Aguardando...");
 }
 
 void loop() {
-
   if (radio.available()) {
 
     memset(mensagem, 0, sizeof(mensagem));
 
-    radio.read(mensagem, sizeof(mensagem));
-    mensagem[31] = '\0';
+    radio.read(mensagem, 32);
+    mensagem[32] = '\0';
 
-    Serial.print("Mensagem recebida: ");
-    Serial.println(mensagem);
+    Serial.print("Recebido: [");
+    Serial.print(mensagem);
+    Serial.println("]");
+
+    Serial.print("HEX: ");
+
+    for (int i = 0; i < 8; i++) {
+      byte valor = (byte) mensagem[i];
+
+      if (valor < 16) Serial.print("0");
+      Serial.print(valor, HEX);
+      Serial.print(" ");
+    }
+
+    Serial.println();
   }
 }
