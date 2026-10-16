@@ -2,26 +2,40 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE = 7, CSN = 8
+RF24 radio(7, 8);
+
+const byte endereco[6] = "00001";
+
+char mensagem[32];
 
 void setup() {
   Serial.begin(9600);
 
-  Serial.println("TESTE NRF24L01");
-
-  if (radio.begin()) {
-    Serial.println("NRF24L01 DETECTADO!");
-  } else {
-    Serial.println("NRF24L01 NAO DETECTADO!");
+  if (!radio.begin()) {
+    Serial.println("Modulo nao detectado!");
+    while (1);
   }
+
+  radio.openReadingPipe(0, endereco);
+  radio.setPALevel(RF24_PA_LOW);
+  radio.setDataRate(RF24_250KBPS);
+  radio.setChannel(76);
+  radio.startListening();
+
+  Serial.println("RECEPTOR PRONTO");
+  Serial.println("Aguardando mensagens...");
 }
 
 void loop() {
-  delay(2000);
 
-  if (radio.isChipConnected()) {
-    Serial.println("Modulo conectado");
-  } else {
-    Serial.println("Modulo desconectado");
+  if (radio.available()) {
+
+    memset(mensagem, 0, sizeof(mensagem));
+
+    radio.read(mensagem, sizeof(mensagem));
+    mensagem[31] = '\0';
+
+    Serial.print("Mensagem recebida: ");
+    Serial.println(mensagem);
   }
 }
