@@ -26,7 +26,7 @@ void setup() {
   radio.openReadingPipe(1, endereco);
   radio.startListening();
 
-  Serial.println("RECEPTOR PRONTO!");
+  Serial.println("RECEPTOR PRONTO!!");
 }
 
 void loop() {
