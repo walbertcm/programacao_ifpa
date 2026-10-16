@@ -2,17 +2,17 @@
 #include <SPI.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN
+RF24 radio(7, 8);
 
 const byte endereco[6] = "BARCO";
 
-char mensagem[32];
+char mensagem[33];
 
 void setup() {
   Serial.begin(9600);
 
   if (!radio.begin()) {
-    Serial.println("Erro no NRF24L01!");
+    Serial.println("ERRO: NRF24L01!");
     while (true) {}
   }
 
@@ -20,11 +20,13 @@ void setup() {
   radio.setPALevel(RF24_PA_MIN);
   radio.setDataRate(RF24_250KBPS);
 
+  // Receber mensagens de tamanho variavel
+  radio.enableDynamicPayloads();
+
   radio.openReadingPipe(1, endereco);
   radio.startListening();
 
-  Serial.println("RECEPTOR PRONTO");
-  Serial.println("Aguardando mensagens...");
+  Serial.println("RECEPTOR PRONTO!");
 }
 
 void loop() {
@@ -32,15 +34,16 @@ void loop() {
 
     uint8_t tamanho = radio.getDynamicPayloadSize();
 
-    // Aqui usamos tamanho fixo por padrao
-    // Portanto lemos o payload configurado
-    // pelo transmissor.
-    (void)tamanho;
+    if (tamanho > 0 && tamanho <= 32) {
 
-    radio.read(mensagem, sizeof(mensagem));
-    mensagem[31] = '\0';
+      radio.read(mensagem, tamanho);
+      mensagem[tamanho] = '\0';
 
-    Serial.print("Recebido: ");
-    Serial.println(mensagem);
+      Serial.print("Recebido: ");
+      Serial.println(mensagem);
+
+    } else {
+      radio.flush_rx();
+    }
   }
 }
