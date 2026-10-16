@@ -2,16 +2,18 @@
 #include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8);
+// CE = 7, CSN = 8, SPI = 4 MHz
+RF24 radio(7, 8, 4000000);
 
 const byte endereco[6] = "BRC01";
-char mensagem[9];
+
+byte dados[8];
 
 void setup() {
   Serial.begin(9600);
 
   if (!radio.begin()) {
-    Serial.println("NRF24 NAO DETECTADO");
+    Serial.println("MODULO NAO DETECTADO");
     while (1);
   }
 
@@ -30,27 +32,17 @@ void setup() {
 
 void loop() {
   if (radio.available()) {
+    memset(dados, 0xAA, sizeof(dados));
 
-    memset(mensagem, 0xAA, sizeof(mensagem));
+    radio.read(dados, sizeof(dados));
 
-    radio.read(mensagem, 8);
-    mensagem[8] = '\0';
-
-    Serial.print("HEX: ");
+    Serial.print("DADOS: ");
 
     for (int i = 0; i < 8; i++) {
-      if ((uint8_t)mensagem[i] < 16) {
-        Serial.print("0");
-      }
-
-      Serial.print((uint8_t)mensagem[i], HEX);
+      Serial.print(dados[i]);
       Serial.print(" ");
     }
 
     Serial.println();
-
-    Serial.print("TEXTO: [");
-    Serial.print(mensagem);
-    Serial.println("]");
   }
 }
