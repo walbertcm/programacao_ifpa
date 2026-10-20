@@ -3,11 +3,12 @@
 #include <RF24.h>
 
 // CE = 7, CSN = 8, SPI = 4 MHz
-RF24 radio(7, 8, 4000000);
+RF24 radio(7, 8);
 
 const byte endereco[6] = "BRC01";
 
-byte dados[8];
+int sensorValue;
+float voltagem;
 
 void setup() {
   Serial.begin(9600);
@@ -17,41 +18,25 @@ void setup() {
     while (1);
   }
 
-  radio.setChannel(100);
-  radio.setDataRate(RF24_250KBPS);
-  radio.setPALevel(RF24_PA_LOW);
-  radio.setAutoAck(true);
-  radio.disableDynamicPayloads();
-  radio.setPayloadSize(8);
+  //radio.setChannel(100);
+  //radio.setDataRate(RF24_250KBPS);
+  //radio.setPALevel(RF24_PA_LOW);
 
-  radio.openReadingPipe(1, endereco);
+  //radio.disableDynamicPayloads();
+  //radio.setPayloadSize(8);
+
+  radio.openReadingPipe(0,endereco);
+  radio.setPALevel(RF24_PA_LOW);
   radio.startListening();
 
   Serial.println("RECEPTOR PRONTO");
 }
 
 void loop() {
+if(radio.available()){
+//char text[32] = "";
+radio.read(&voltagem, sizeof(voltagem));
+Serial.println(voltagem);
 
-  if (radio.available()) {
-
-    memset(dados, 0xAA, sizeof(dados));
-
-    radio.read(dados, sizeof(dados));
-
-    Serial.println("------ RECEBIDO ------");
-
-    for (int i = 0; i < 8; i++) {
-
-      Serial.print("Posicao ");
-      Serial.print(i);
-
-      Serial.print(" = ");
-      Serial.print(dados[i]);
-
-      Serial.print(" | HEX = ");
-      Serial.println(dados[i], HEX);
-    }
-
-    Serial.println("----------------------");
-  }
+}
 }
