@@ -1,60 +1,60 @@
-
 #include <SPI.h>
+#include <nRF24L01.h>
 #include <RF24.h>
 
-RF24 radio(7, 8); // CE, CSN
+RF24 radio(7, 8);
 
-const byte endereco[6] = "BARCO";
+const byte endereco[6] = "BRG01";
 
-char mensagem[32];
+const int pinoLeme = A0;
+const int pinoBotao = 2;
+
+// Estrutura que será enviada
+struct Dados {
+  int leme;
+  byte acelerador;
+};
+
+Dados dados;
 
 void setup() {
-  Serial.begin(9600);
-  
+
+  //Serial.begin(9600);
+
+  pinMode(pinoBotao, INPUT_PULLUP);
+
   if (!radio.begin()) {
-    Serial.println("Erro no NRF24L01!");
-    while (true) {}
+    //Serial.println("RADIO NAO DETECTADO");
+    //while (1);
   }
 
-  radio.setChannel(76);
   radio.setPALevel(RF24_PA_MIN);
-  radio.setDataRate(RF24_250KBPS);
-
+  radio.setChannel(108);
   radio.openWritingPipe(endereco);
+
   radio.stopListening();
 
-  Serial.println("TRANSMISSOR PRONTO");
-  Serial.println("Digite uma mensagem:");
+  //Serial.println("TRANSMISSOR PRONTO");
 }
 
 void loop() {
-  if (Serial.available() > 0) {
 
-    size_t tamanho = Serial.readBytesUntil(
-      '\n', mensagem, sizeof(mensagem) - 1
-    );
+  // Lê potenciômetro
+  dados.leme = analogRead(pinoLeme);
 
-    // Remove eventual retorno de carro
-    if (tamanho > 0 && mensagem[tamanho - 1] == '\r') {
-      tamanho--;
-    }
+  dados.acelerador = (digitalRead(pinoBotao) == LOW) ? 1 : 0;
 
-    mensagem[tamanho] = '\0';
+  bool enviado = radio.write(&dados, sizeof(dados));
 
-    if (tamanho == 0) return;
+  //Serial.print("LEME: ");
+  //Serial.print(dados.leme);
 
-    bool sucesso = radio.write(
-      mensagem, tamanho + 1
-    );
+  //Serial.print(" | ACELERADOR: ");
+  //Serial.print(dados.acelerador);
 
-    if (sucesso) {
-      Serial.print("Enviado: ");
-      Serial.println(mensagem);
-    } else {
-      Serial.println("Falha na transmissao!");
-    }
+  //Serial.println(
+  //    enviado ? " | ACK" : " | FALHA"
+  //);
 
-    Serial.println("Digite outra mensagem:");
-  }
+  delay(50);
 }
-

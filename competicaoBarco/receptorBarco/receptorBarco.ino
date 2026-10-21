@@ -1,14 +1,12 @@
+
 #include <SPI.h>
-#include <nRF24L01.h>
 #include <RF24.h>
 
-// CE = 7, CSN = 8, SPI = 4 MHz
 RF24 radio(7, 8);
 
-const byte endereco[6] = "BRC01";
+const byte endereco[6] = "BRAGA_BOAT";
 
-int sensorValue;
-float voltagem;
+char mensagem[33];
 
 void setup() {
   Serial.begin(9600);
@@ -18,25 +16,27 @@ void setup() {
     while (1);
   }
 
-  //radio.setChannel(100);
-  //radio.setDataRate(RF24_250KBPS);
-  //radio.setPALevel(RF24_PA_LOW);
 
-  //radio.disableDynamicPayloads();
-  //radio.setPayloadSize(8);
-
-  radio.openReadingPipe(0,endereco);
-  radio.setPALevel(RF24_PA_LOW);
+  radio.openReadingPipe(1, endereco);
   radio.startListening();
 
   Serial.println("RECEPTOR PRONTO");
 }
 
 void loop() {
-if(radio.available()){
-//char text[32] = "";
-radio.read(&voltagem, sizeof(voltagem));
-Serial.println(voltagem);
 
-}
+  if (radio.available()) {
+
+    memset(mensagem, 0, sizeof(mensagem));
+
+    radio.read(mensagem, 32);
+
+    mensagem[32] = '\0';
+
+    if (mensagem[0] != '\0') {
+
+      Serial.print("RECEBIDO: ");
+      Serial.println(mensagem);
+    }
+  }
 }
