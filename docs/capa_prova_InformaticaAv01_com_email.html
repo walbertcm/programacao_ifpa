@@ -225,7 +225,7 @@
 
 <script>
 // URL da implantação do Apps Script. Atualize se implantar uma nova versão com outra URL.
-const API_URL = "https://script.google.com/macros/s/AKfycbyCPbjXZwipqFWUtsCfc8fY_S1pNzXxeshAtIHNgHz2J_VY9kNyFbtuXuU1qlHcjnwP/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwxjgWfB45NBnWBXuAbk1xkoexy7BjRdXx9OAKIEoBOXhRzvfNC7nDB8bBHgyL4J_Q-ZQ/exec";
 let avaliacao = null;
 
 function mostrarMensagem(texto, erro = false) {
@@ -287,7 +287,7 @@ document.getElementById("formAluno").addEventListener("submit", function(evento)
   }
   localStorage.setItem("aluno", JSON.stringify(aluno));
   mostrarMensagem("Dados registrados. Preparando prova...");
-  window.location.href = "prova_InformaticaAv01.html";
+  window.location.href = "prova_InformaticaAv01_corrigida_2026.html";
 });
 
 carregarAvaliacao();
